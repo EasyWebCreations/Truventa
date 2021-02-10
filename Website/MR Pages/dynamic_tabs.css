@@ -6,42 +6,38 @@
     margin-top: -10%;
     background-color: rgb(185, 176, 176);
     width: 400px;
-    margin-right: 40px;
+    margin-right: 20px;
     padding:5%;
     position:relative;
     right:45%;
 }
-
+.first_back{
+    margin-left:-140%;
+}
 .second_back
 {
-    position:relative;left:-600px; 
+    margin-left: -140px;
+    width:100%
 }
-.second{
-width:100%;
-}
-#navogation
+#database
 {
-    background-color: red;
+
+    margin-top: -80%;
+    
+    margin-left: -75%;
     position:relative;
-    left:20%;
+    left:0px;
 }
-navigation
-
-.first_back
-{
-    position:relative;left:-130%;
-}
-
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     #form
 {
-    margin-top: -390px;
+    margin-top: -35%;
     background-color: rgb(185, 176, 176);
-    width: 90%;
-    margin-left: 6%;
+    width: 100%;
+    margin-left: -20%;
     padding:5%;
 }
 #database
@@ -52,7 +48,6 @@ navigation
     position:relative;
     left:0px;
 }
-
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
