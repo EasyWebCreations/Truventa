@@ -150,16 +150,19 @@
 
           <div id="form" class="column">
                <h3 id="login">LOGIN</h3>
-               <form action="">
+
+               <form action="login.php" method="POST">
                     <input type="text" id="empid" name="empid" placeholder="Employeee ID" required>
                     <input type="number" id="pin" name="pin" placeholder="PIN" required>
-               </form>
-               <div style="display: flex;
-               margin-top: 10%;">
-                    <a id="forgetpass" href="" style="width: 80%;margin-left: 2%;text-decoration: none;color: blue;
+
+                    <div style="display: flex; margin-top: 10%;">
+                         <a id="forgetpass" href="" style="width: 80%;margin-left: 2%;text-decoration: none;color: blue;
                     font-weight: bolder;font-size: larger;margin-top: 2%;">Forget PIN?</a>
-                    <button class="loginbtn" style="margin-right: 10%;">Login</button>
-               </div>
+                         <button class="loginbtn" type="submit" name="login" style="margin-right: 10%;">Login</button>
+
+                    </div>
+               </form>
+
           </div>
      </section>
 
