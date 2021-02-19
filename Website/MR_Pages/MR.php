@@ -1,33 +1,33 @@
 <?php
 if (isset($_POST['insert_data'])) {
-     //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
-     $conn = mysqli_connect("localhost", "root", "", "truventa");
+    //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
+    $conn = mysqli_connect("localhost", "root", "", "truventa");
 
 
-     $id = $_POST['id'];
-     $type = $_POST['type'];
-     $fdate = $_POST['fdate'];
-     $duration = $_POST['duration'];
-     $remarks = $_POST['remarks'];
+    $id = $_POST['id'];
+    $type = $_POST['type'];
+    $fdate = $_POST['fdate'];
+    $duration = $_POST['duration'];
+    $remarks = $_POST['remarks'];
 
-     $pl_query = "SELECT SUM(duration) FROM `leaves` WHERE id = $id AND decision = 'accepted'";
-     $pl_result = $conn->query($pl_query);
-     $fetched_result = $pl_result->fetch_assoc();
-     $past_leaves = $fetched_result["SUM(duration)"];
-     $plb = 18 - $past_leaves; 
-     echo $plb;
-     // echo $accepted_leaves;
-     $sql = "INSERT INTO leaves(id,`type`,fdate,duration,remarks,pl_bal) VALUES ('$id','$type','$fdate','$duration','$remarks',$plb)";
-     
-     $sql1 = "SELECT * FROM leaves ORDER BY fdate DESC";
-     $result = $conn->query($sql1);
+    $pl_query = "SELECT SUM(duration) FROM `leaves` WHERE id = $id AND decision = 'accepted'";
+    $pl_result = $conn->query($pl_query);
+    $fetched_result = $pl_result->fetch_assoc();
+    $past_leaves = $fetched_result["SUM(duration)"];
+    $plb = 18 - $past_leaves;
+    echo $plb;
+    // echo $accepted_leaves;
+    $sql = "INSERT INTO leaves(id,`type`,fdate,duration,remarks,pl_bal) VALUES ('$id','$type','$fdate','$duration','$remarks',$plb)";
+
+    $sql1 = "SELECT * FROM leaves ORDER BY fdate DESC";
+    $result = $conn->query($sql1);
 
 
-     mysqli_query($conn, $sql);
-     if (mysqli_error($conn))
-          echo "Record insertion error";
-     else
-          echo "Record added successfully.";
+    mysqli_query($conn, $sql);
+    if (mysqli_error($conn))
+        echo "Record insertion error";
+    else
+        echo "Record added successfully.";
 }
 ?>
 <!DOCTYPE html>
@@ -64,9 +64,10 @@ if (isset($_POST['insert_data'])) {
             var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
             var today = now.getFullYear() + "-" + (month) + "-" + (day);
-
+            var today1 = (day) + "-" + (month) + "-" + now.getFullYear()
 
             $('#datePicker').val(today);
+            document.getElementById('defaultdate').innerHTML = today1;
         });
     </script>
 
@@ -179,11 +180,11 @@ if (isset($_POST['insert_data'])) {
         }
 
         .subform {
-        margin: auto;
-        margin-bottom: 3%;
-        /* background-color: yellow; */
-        width: 84%;
-        /* padding: 2%; */
+            margin: auto;
+            margin-bottom: 3%;
+            /* background-color: yellow; */
+            width: 84%;
+            /* padding: 2%; */
         }
 
         .field {
@@ -197,22 +198,23 @@ if (isset($_POST['insert_data'])) {
 
         .c1 {
             float: left;
-            width:35%
+            width: 35%
         }
 
         .c2 {
-        /* float: right; */
-        margin-left: 9%;
-        width: 18%;
-        }
-    
-        .c3 {
-        margin-left: 7%;
-        width: 21%;
-        /* margin-left: 15%; */
+            /* float: right; */
+            margin-left: 9%;
+            width: 18%;
         }
 
-        select,input {
+        .c3 {
+            margin-left: 7%;
+            width: 21%;
+            /* margin-left: 15%; */
+        }
+
+        select,
+        input {
             margin-bottom: 2%;
         }
 
@@ -305,7 +307,7 @@ if (isset($_POST['insert_data'])) {
                         <tr>
                             <th class="iconbox"><i class="fa fa-shopping-basket"></i></th>
                             <td class="borderbox">
-                                <a class="tabbuttons1" onclick="openCity(event, 'one')"  style="color:black"> <b class="on">Order Now </b></a><br />
+                                <a class="tabbuttons1" id="defaultOpen" onclick="openCity(event, 'one')" style="color:black"> <b class="on">Order Now </b></a><br />
                             </td>
                         </tr>
                     </table>
@@ -313,7 +315,7 @@ if (isset($_POST['insert_data'])) {
                         <tr>
                             <th class="iconbox"><i class="fa fa-truck"></i></th>
                             <td class="borderbox">
-                                <a class="tabbuttons1" onclick="openCity(event, 'two')" id="defaultOpen" style="color:black"> <b>Track
+                                <a class="tabbuttons1" onclick="openCity(event, 'two')" style="color:black"> <b>Track
                                         Orders </b></a>
                             </td>
                         </tr>
@@ -351,10 +353,10 @@ if (isset($_POST['insert_data'])) {
 
 
 
-            <div ID="one" class="tabcontent" >
+            <div ID="one" class="tabcontent">
                 <div class="outerbox">
                     <form method="post" action="submit.php">
-                        <p class="dt">04/02/2021</p>
+                        <p class="dt" id="defaultdate"></p>
 
 
                         <div class="subform">
@@ -365,7 +367,7 @@ if (isset($_POST['insert_data'])) {
                             </select>
                             <input class="field c2" type="number" name="quantities[]" placeholder="Qty.">
                             <input class="field c3" type="number" name="prices[]" placeholder="Price">
-                        
+
 
                             <a href="javascript:void(0)" class="field addMore"><span aria-hidden="false "></span> <i class="fas fa-plus" style="color:black;"></i></a>
 
@@ -484,9 +486,8 @@ if (isset($_POST['insert_data'])) {
             </div>
 
             <div ID="five" class="tabcontent">
+
                 <div class="container" style="margin-left: 30%;margin-top: -5%;">
-
-
                     <ul id="navigation" class="nav nav-pills" style="margin-left: 30%;">
 
                         <li class="first_back" style="border: 2px solid;border-top-left-radius: 25px;border-bottom-left-radius: 25px;">
@@ -503,7 +504,7 @@ if (isset($_POST['insert_data'])) {
 
                         <div id="menu1" class="tab-pane fade">
                             <h3 style="color:white">Menu 1</h3>
-                            <form action="template.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST" style="">
+                            <form action="template.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST">
                                 <div style="display: flex;">
 
                                     <input type="number" style="width: 45%;margin-right:10%;height: 40px;" id="quantity" name="id" placeholder="Employee ID">
@@ -545,45 +546,45 @@ if (isset($_POST['insert_data'])) {
 
 
                             <section>
-                            <?php include('connectDB.php'); ?>
-                        <?php
-                        $result = $connect->query("SELECT * FROM leaves ORDER BY `lid` DESC");
-                        ?>
+                                <?php include('connectDB.php'); ?>
+                                <?php
+                                $result = $connect->query("SELECT * FROM leaves ORDER BY `lid` DESC");
+                                ?>
 
-                            <table id="database" class="table-striped table-hover">
-                                             <thead class="bg-success" style="background-color:#5cb85c">
-                                                  <tr>
-                                                       <th>LID</th>
-                                                       <th>Type</th>
-                                                       <th>From</th>
-                                                       <th>Duration</th>
-                                                       <th>Decision</th>
-                                                       <th>PL Balance</th>
-                                                       <th>Remark</th>
-                                                  </tr>
+                                <table id="database" class="table-striped table-hover">
+                                    <thead class="bg-success" style="background-color:#5cb85c">
+                                        <tr>
+                                            <th>LID</th>
+                                            <th>Type</th>
+                                            <th>From</th>
+                                            <th>Duration</th>
+                                            <th>Decision</th>
+                                            <th>PL Balance</th>
+                                            <th>Remark</th>
+                                        </tr>
 
 
-                                             </thead>
+                                    </thead>
 
-                                             <?php
-                                             while ($rows = $result->fetch_assoc()) {
-                                             ?>
-                                                  <tr>
+                                    <?php
+                                    while ($rows = $result->fetch_assoc()) {
+                                    ?>
+                                        <tr>
 
-                                                       <td><?php echo $rows['lid']; ?></td>
-                                                       <td><?php echo $rows['type']; ?></td>
-                                                       <td><?php echo $rows['fdate']; ?></td>
-                                                       <td><?php echo $rows['duration']; ?></td>
-                                                       <td><?php echo $rows['decision']; ?></td>
-                                                       <td><?php echo $rows['pl_bal']; ?></td>
-                                                       <td><?php echo $rows['remarks']; ?></td>
-                                                  </tr>
-                                             <?php
-                                             }
-                                             ?>
-                                        </table>
+                                            <td><?php echo $rows['lid']; ?></td>
+                                            <td><?php echo $rows['type']; ?></td>
+                                            <td><?php echo $rows['fdate']; ?></td>
+                                            <td><?php echo $rows['duration']; ?></td>
+                                            <td><?php echo $rows['decision']; ?></td>
+                                            <td><?php echo $rows['pl_bal']; ?></td>
+                                            <td><?php echo $rows['remarks']; ?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </table>
 
-                                   </section>
+                            </section>
 
                         </div>
 
@@ -591,6 +592,7 @@ if (isset($_POST['insert_data'])) {
                 </div>
 
             </div>
+
         </div>
 
 
@@ -685,4 +687,3 @@ if (isset($_POST['insert_data'])) {
     </script>
 
 </html>
-
