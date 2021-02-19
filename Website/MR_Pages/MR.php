@@ -1,4 +1,7 @@
 <?php
+
+$empid = $_GET['user'];
+
 if (isset($_POST['insert_data'])) {
     //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
     $conn = mysqli_connect("localhost", "root", "", "truventa");

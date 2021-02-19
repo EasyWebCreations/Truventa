@@ -15,11 +15,11 @@ if (isset($_POST["login"])) {
     if ($numrows != 0) {
         $designation = $userdata['designation'];
         if ($designation == 'MR') {
-            header("Location: MR_Pages/MR.php");
+            header("Location: MR_Pages/MR.php?user=" . $user);
         } elseif ($designation == 'HR') {
-            header('Location: HR/create.php');
+            header("Location: HR/create.php?user=" . $user);
         } elseif ($designation == 'Stock') {
-            header("Location: Stockist/home.php");
+            header("Location: Stockist/home.php?user=" . $user);
         } else {
             echo "<h3>Invalid ID or password!</h3>";
         }
