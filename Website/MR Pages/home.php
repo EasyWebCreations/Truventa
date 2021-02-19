@@ -277,7 +277,7 @@ $mysqli->close();
 
                               <div id="menu1" class="tab-pane fade">
                                    <h3 style="color:white">Menu 1</h3>
-                                   <form action="home1.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST" style="">
+                                   <form action="home.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST" style="">
                                         <div style="display: flex;">
 
                                              <input type="number" style="width: 45%;margin-right:10%;height: 40px;" id="quantity" name="id" placeholder="Employee ID">
@@ -471,6 +471,7 @@ if (isset($_POST['insert_data'])) {
      $duration = $_POST['duration'];
      $remarks = $_POST['remarks'];
 
+     
      $sql = "INSERT INTO leaves(id,type,fdate,duration,remarks) VALUES ('$id','$type','$fdate','$duration','$remarks')";
 
 

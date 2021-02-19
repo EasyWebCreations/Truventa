@@ -147,11 +147,11 @@
         }
 
         .subform {
-            margin: auto;
-            margin-bottom: 3%;
-            /* background-color: yellow; */
-            width: 84%;
-            /* padding: 2%; */
+        margin: auto;
+        margin-bottom: 3%;
+        /* background-color: yellow; */
+        width: 84%;
+        /* padding: 2%; */
         }
 
         .field {
@@ -160,19 +160,27 @@
             padding: 2%;
             /* margin-left: 8%; */
             display: inline;
+            /* background-color: brown; */
         }
 
         .c1 {
             float: left;
+            width:35%
         }
 
         .c2 {
-            /* float: right; */
-            margin-left: 15%;
+        /* float: right; */
+        margin-left: 9%;
+        width: 18%;
+        }
+    
+        .c3 {
+        margin-left: 7%;
+        width: 21%;
+        /* margin-left: 15%; */
         }
 
-        select,
-        input {
+        select,input {
             margin-bottom: 2%;
         }
 
@@ -265,7 +273,7 @@
                         <tr>
                             <th class="iconbox"><i class="fa fa-shopping-basket"></i></th>
                             <td class="borderbox">
-                                <a class="tabbuttons1" onclick="openCity(event, 'one')" id="defaultOpen" style="color:black"> <b class="on">Order Now </b></a><br />
+                                <a class="tabbuttons1" onclick="openCity(event, 'one')"  style="color:black"> <b class="on">Order Now </b></a><br />
                             </td>
                         </tr>
                     </table>
@@ -273,7 +281,7 @@
                         <tr>
                             <th class="iconbox"><i class="fa fa-truck"></i></th>
                             <td class="borderbox">
-                                <a class="tabbuttons1" onclick="openCity(event, 'two')" style="color:black"> <b>Track
+                                <a class="tabbuttons1" onclick="openCity(event, 'two')" id="defaultOpen" style="color:black"> <b>Track
                                         Orders </b></a>
                             </td>
                         </tr>
@@ -311,7 +319,7 @@
 
 
 
-            <div ID="one" class="tabcontent">
+            <div ID="one" class="tabcontent" >
                 <div class="outerbox">
                     <form method="post" action="submit.php">
                         <p class="dt">04/02/2021</p>
@@ -323,7 +331,9 @@
                                 <option value="Dhauti Yog ">Dhauti Yog</option>
                                 <option value="Churan ">Churan</option>
                             </select>
-                            <input class="field c2" type="number" name="quantities[]" placeholder="Quantity">
+                            <input class="field c2" type="number" name="quantities[]" placeholder="Qty.">
+                            <input class="field c3" type="number" name="prices[]" placeholder="Price">
+                        
 
                             <a href="javascript:void(0)" class="field addMore"><span aria-hidden="false "></span> <i class="fas fa-plus" style="color:black;"></i></a>
 
@@ -340,7 +350,8 @@
                             <option value="Dhauti Yog ">Dhauti Yog</option>
                             <option value="Churan ">Churan</option>
                         </select>
-                        <input class="field c2" type="number" name="quantities[]" placeholder="Quantity">
+                        <input class="field c2" type="number" name="quantities[]" placeholder="Qty.">
+                        <input class="field c3" type="number" name="prices[]" placeholder="Price">
                         <div class="field">
                             <a href="javascript:void(0)" class="remove"><span aria-hidden="false "></span> <i class="fas fa-minus" style="color:black;"></i></a>
                         </div>
@@ -374,7 +385,7 @@
             <div ID="two" class="tabcontent">
                 <?php include('connectDB.php'); ?>
                 <?php
-                $result = $connect->query("SELECT * FROM orders");
+                $result = $connect->query("SELECT * FROM orders ORDER BY `date` DESC");
                 ?>
 
                 <div class="row " style="margin: 5%;">
@@ -405,7 +416,7 @@
             <div ID="three" class="tabcontent">
                 <?php include('connectDB.php'); ?>
                 <?php
-                $result = $connect->query("SELECT * FROM orders");
+                $result = $connect->query("SELECT * FROM orders ORDER BY `date` DESC");
                 ?>
 
                 <div class="row " style="margin: 5%;">
@@ -460,7 +471,7 @@
 
                         <div id="menu1" class="tab-pane fade">
                             <h3 style="color:white">Menu 1</h3>
-                            <form action="home.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST" style="">
+                            <form action="template.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST" style="">
                                 <div style="display: flex;">
 
                                     <input type="number" style="width: 45%;margin-right:10%;height: 40px;" id="quantity" name="id" placeholder="Employee ID">
@@ -484,8 +495,6 @@
 
                                     <br>
                                     <input style="width: 45%;height: 40px;" type="number" id="duration" name="duration" placeholder="duration">
-
-
 
                                     <br>
                                     <br>
@@ -592,12 +601,7 @@
 
                 </div>
             </div>
-
-
-
         </footer>
-
-
 
     </body>
     <!-- SCRIPTS -->
