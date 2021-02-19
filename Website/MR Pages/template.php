@@ -1,3 +1,35 @@
+<?php
+if (isset($_POST['insert_data'])) {
+     //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
+     $conn = mysqli_connect("localhost", "root", "", "truventa");
+
+
+     $id = $_POST['id'];
+     $type = $_POST['type'];
+     $fdate = $_POST['fdate'];
+     $duration = $_POST['duration'];
+     $remarks = $_POST['remarks'];
+
+     $pl_query = "SELECT SUM(duration) FROM `leaves` WHERE id = $id AND decision = 'accepted'";
+     $pl_result = $conn->query($pl_query);
+     $fetched_result = $pl_result->fetch_assoc();
+     $past_leaves = $fetched_result["SUM(duration)"];
+     $plb = 18 - $past_leaves; 
+     echo $plb;
+     // echo $accepted_leaves;
+     $sql = "INSERT INTO leaves(id,`type`,fdate,duration,remarks,pl_bal) VALUES ('$id','$type','$fdate','$duration','$remarks',$plb)";
+     
+     $sql1 = "SELECT * FROM leaves ORDER BY fdate DESC";
+     $result = $conn->query($sql1);
+
+
+     mysqli_query($conn, $sql);
+     if (mysqli_error($conn))
+          echo "Record insertion error";
+     else
+          echo "Record added successfully.";
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -308,7 +340,7 @@
                         <tr>
                             <th class="iconbox"><i class="material-icons">assignment</i></th>
                             <td class="borderbox">
-                                <a class="tabbuttons1" onclick="openCity(event, 'five')" style="color:black"> <b>Apply
+                                <a class="tabbuttons1" onclick="openCity(event, 'five')" id="LeaveSection" style="color:black"> <b>Apply
                                         for Leave </b></a>
                             </td>
                         </tr>
@@ -513,24 +545,45 @@
 
 
                             <section>
+                            <?php include('connectDB.php'); ?>
+                        <?php
+                        $result = $connect->query("SELECT * FROM leaves ORDER BY `lid` DESC");
+                        ?>
+
+                            <table id="database" class="table-striped table-hover">
+                                             <thead class="bg-success" style="background-color:#5cb85c">
+                                                  <tr>
+                                                       <th>LID</th>
+                                                       <th>Type</th>
+                                                       <th>From</th>
+                                                       <th>Duration</th>
+                                                       <th>Decision</th>
+                                                       <th>PL Balance</th>
+                                                       <th>Remark</th>
+                                                  </tr>
 
 
-                                <table id="database" class="table-striped table-hover">
-                                    <thead class="bg-success" style="background-color:#5cb85c">
-                                        <tr>
-                                            <th>LID</th>
-                                            <th>Type</th>
-                                            <th>From</th>
-                                            <th>Duration</th>
-                                            <th>Decision</th>
-                                            <th>PL Balance</th>
-                                        </tr>
+                                             </thead>
 
+                                             <?php
+                                             while ($rows = $result->fetch_assoc()) {
+                                             ?>
+                                                  <tr>
 
-                                    </thead>
+                                                       <td><?php echo $rows['lid']; ?></td>
+                                                       <td><?php echo $rows['type']; ?></td>
+                                                       <td><?php echo $rows['fdate']; ?></td>
+                                                       <td><?php echo $rows['duration']; ?></td>
+                                                       <td><?php echo $rows['decision']; ?></td>
+                                                       <td><?php echo $rows['pl_bal']; ?></td>
+                                                       <td><?php echo $rows['remarks']; ?></td>
+                                                  </tr>
+                                             <?php
+                                             }
+                                             ?>
+                                        </table>
 
-                                </table>
-                            </section>
+                                   </section>
 
                         </div>
 
@@ -607,7 +660,6 @@
     <!-- SCRIPTS -->
     <script src="js/jquery.js"></script>
     <script src="js/custom.js"></script>
-
     <script>
         function openCity(evt, cityName) {
             var i, tabcontent, borderbox;
@@ -633,3 +685,4 @@
     </script>
 
 </html>
+

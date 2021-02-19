@@ -471,12 +471,17 @@ if (isset($_POST['insert_data'])) {
      $duration = $_POST['duration'];
      $remarks = $_POST['remarks'];
 
+     $pl_query = "SELECT SUM(duration) FROM `leaves` WHERE id = $id AND decision = 'accepted'";
+     $pl_result = $conn->query($pl_query);
+     $fetched_result = $pl_result->fetch_assoc();
+     $past_leaves = $fetched_result["SUM(duration)"];
+     $plb = 18 - $past_leaves; 
+     echo $plb;
+     // echo $accepted_leaves;
+     $sql = "INSERT INTO leaves(id,`type`,fdate,duration,remarks,pl_bal) VALUES ('$id','$type','$fdate','$duration','$remarks',$plb)";
      
-     $sql = "INSERT INTO leaves(id,type,fdate,duration,remarks) VALUES ('$id','$type','$fdate','$duration','$remarks')";
-
-
-     $sql1 = "SELECT * FROM leaves";
-     $result = $mysqli->query($sql1);
+     $sql1 = "SELECT * FROM leaves ORDER BY fdate DESC";
+     $result = $conn->query($sql1);
 
 
      mysqli_query($conn, $sql);
@@ -485,5 +490,4 @@ if (isset($_POST['insert_data'])) {
      else
           echo "Record added successfully.";
 }
-
 ?>
