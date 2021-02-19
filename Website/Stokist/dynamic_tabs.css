@@ -1,0 +1,141 @@
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #form
+{
+    margin-top: -10%;
+    background-color: rgb(185, 176, 176);
+    width: 400px;
+    margin-right: 40px;
+    padding:5%;
+    position:relative;
+    right:45%;
+}
+
+.second_back
+{
+    position:relative;left:-600px; 
+}
+.second{
+width:100%;
+}
+#navogation
+{
+    background-color: red;
+    position:relative;
+    left:20%;
+}
+navigation
+
+.first_back
+{
+    position:relative;left:-130%;
+}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #form
+{
+    margin-top: -390px;
+    background-color: rgb(185, 176, 176);
+    width: 90%;
+    margin-left: 6%;
+    padding:5%;
+}
+#database
+{
+    width:50%;
+   
+    margin-left: -30%;
+    position:relative;
+    left:0px;
+}
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    #form
+{
+    margin-top: -55%;
+    background-color: rgb(185, 176, 176);
+    width: 60%;
+    margin-left: 5%;
+    padding:5%;
+}
+.first_back{
+    margin-left:-35%;
+}
+#database
+{
+
+  
+    
+        width:50%;
+        position:relative;
+        left:-80px;
+        margin-top: -40px;
+    
+
+}
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #form
+{
+    margin-top: -45%;
+    background-color: rgb(185, 176, 176);
+    width: 60%;
+    margin-left: 10%;
+    padding:5%;
+}
+.first_back{
+    margin-left:-25%;
+}
+#database
+{
+    width:70%;
+    margin-right: 600px;
+    margin-top: -30%;
+    position:relative;
+    left:0px;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    #form
+{
+    margin-top: -35%;
+    background-color: rgb(185, 176, 176);
+    width: 50%;
+    margin-left: 20%;
+    padding:5%;
+}
+.first_back{
+    margin-left:-10%;
+}
+#database
+{
+    width:70%;
+    margin-right: 400px;
+    margin-top: -30%;
+    position:relative;
+        left:0px;
+}
+}
+#a
+{
+    background-color: red;
+    margin-right: 20%;
+}
+#b
+{
+    background-color: red;
+    
+}
