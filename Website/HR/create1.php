@@ -7,7 +7,8 @@ $password = '';
 // Database name is gfg 
 $database = 'truventa';
 
-
+// Server is localhost with 
+// port number 3308 
 $servername = 'localhost';
 $mysqli = new mysqli(
   $servername,
@@ -367,7 +368,34 @@ $mysqli->close();
     </div>
     <div ID="two" class="tabcontent">
       <h1>second page</h1>
+      <div class="main">
+        <table class="table table-striped table-hover">
+          <thead class="bg-success">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">ROLE</th>
+              <th scope="col">Name</th>
+              <th colspan="1">Action</th>
+            </tr>
+          </thead>
+          <?php
+          include('connectDB.php');
+          $result = $connect->query("SELECT * FROM employee");
+          ?>
 
+          <?php
+          while ($row = $result->fetch_assoc()) : ?>
+            <tr>
+              <td><?php echo $row['id']; ?></td>
+              <td><?php echo $row['designation']; ?></td>
+              <td><?php echo $row['name']; ?></td>
+              <td>
+                <a class="btn btn-success" href="index1.php?edit=<?php echo $row['id']; ?>">Click Here</a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </table>
+      </div>
     </div>
     <div ID="three" class="tabcontent">
       <h1 style="position:relative;top:-500px;visibility:hidden;">third page</h1>
@@ -416,7 +444,7 @@ $mysqli->close();
       <div style="background-color:#E4E5E6;width:40%;
 position:relative;top:-400px;
 margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
-        <form action="create.php" method="post" style="margin-left:10%;">
+        <form action="create1.php" method="post" style="margin-left:10%;">
           <h1 style="color:black">Set Target</h1>
           <div style="display:flex">
 
@@ -528,7 +556,7 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
 </html>
 
 <?php
-include('connectdb1.php');
+include('connectDB.php');
 
 
 
