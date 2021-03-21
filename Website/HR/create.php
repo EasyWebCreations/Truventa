@@ -7,7 +7,8 @@ $password = '';
 // Database name is gfg 
 $database = 'truventa';
 
-
+// Server is localhost with 
+// port number 3308 
 $servername = 'localhost';
 $mysqli = new mysqli(
   $servername,
@@ -16,7 +17,7 @@ $mysqli = new mysqli(
   $database
 );
 
-// Checking for connections 
+// Checking for connections
 if ($mysqli->connect_error) {
   die('Connect Error (' .
     $mysqli->connect_errno . ') ' .
@@ -318,7 +319,6 @@ $mysqli->close();
 
     </div>
     <div class="column right">
-
       <div ID="one" class="tabcontent">
         <form action="create.php" method="POST">
           <table class="formtable">
@@ -330,9 +330,9 @@ $mysqli->close();
               <td class="entityd">Designation</td>
 
               <td class="entityr" rowspan="1" colspan="3">
-                <input type="radio" name="designation" value="mr">
+                <input type="radio" name="designation" value="MR">
                 <label for="mr">MR</label><br>
-                <input type="radio" name="designation" value="stockist">
+                <input type="radio" name="designation" value="Stock">
                 <label for="stockist">Stockist</label><br>
               </td>
             </tr>
@@ -353,6 +353,11 @@ $mysqli->close();
 
             </tr>
             <tr class="rowentity">
+              <td class="entity"><span class="dot"><i class='fas fa-envelope'></i></span></td>
+              <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="email" name="email" placeholder="Email"></td>
+
+            </tr>
+            <tr class="rowentity">
               <td class="entity"><span class="dot"><i class='fas fa-key'></i></span></td>
               <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="password" name="pin" placeholder="PIN"></td>
 
@@ -367,7 +372,34 @@ $mysqli->close();
     </div>
     <div ID="two" class="tabcontent">
       <h1>second page</h1>
+      <div class="main">
+        <table class="table table-striped table-hover">
+          <thead class="bg-success">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">ROLE</th>
+              <th scope="col">Name</th>
+              <th colspan="1">Action</th>
+            </tr>
+          </thead>
+          <?php
+          include('connectDB.php');
+          $result = $connect->query("SELECT * FROM employee");
+          ?>
 
+          <?php
+          while ($row = $result->fetch_assoc()) : ?>
+            <tr>
+              <td><?php echo $row['id']; ?></td>
+              <td><?php echo $row['designation']; ?></td>
+              <td><?php echo $row['name']; ?></td>
+              <td>
+                <a class="btn btn-success" href="index1.php?edit=<?php echo $row['id']; ?>">Click Here</a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </table>
+      </div>
     </div>
     <div ID="three" class="tabcontent">
       <h1 style="position:relative;top:-500px;visibility:hidden;">third page</h1>
@@ -407,7 +439,6 @@ $mysqli->close();
         // else{
         //     echo 'Data Not Inserted';
         // }
-
 
         mysqli_close($connect);
       }
@@ -465,10 +496,8 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
               <th>Type</th>
               <th>From</th>
               <th>Duration</th>
-
               <th>PL Balance</th>
             </tr>
-
 
           </thead>
           <?php   // LOOP TILL END OF DATA  
@@ -484,9 +513,6 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
               <td><?php echo $rows['fdate']; ?></td>
               <td><?php echo $rows['duration']; ?></td>
               <td><?php echo $rows['pl_bal']; ?></td>
-
-
-
 
             </tr>
           <?php
@@ -528,28 +554,27 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
 </html>
 
 <?php
-include('connectdb1.php');
-
-
+include('connectDB.php');
 
 if (isset($_POST['create'])) {
   $designation = $_POST['designation'];
   $id = $_POST['id'];
+  $email = $_POST['email'];
   $name = $_POST['name'];
   $mobile = $_POST['mobile'];
   $pin = $_POST['pin'];
 
+  $hash_pin = password_hash($pin, PASSWORD_BCRYPT);
 
-
-  $sql = "INSERT INTO employee (designation,id,name,mobile,pin) VALUES('$designation','$id','$name','$mobile','$pin')";
+  $sql = "INSERT INTO employee (designation,id,name,mobile,pin,email) VALUES('$designation','$id','$name','$mobile','$hash_pin','$email')";
   mysqli_query($connect, $sql);
 
 
-  echo $designation;
-  echo $id;
-  echo $name;
-  echo $mobile;
-  echo $pin;
+  // echo $designation;
+  // echo $id;
+  // echo $name;
+  // echo $mobile;
+  // echo $pin;
 }
 
 ?>

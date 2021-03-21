@@ -80,11 +80,11 @@
 
      <section class="row">
 
-          <form action="login.html" method="POST">
+          <form action="" method="POST">
                <div id="form" class="column">
-                    <h3 id="login">LOGIN</h3>
+                    <h3 id="login">Forget Password</h3>
 
-                    <form action="login.html">
+                    <form action="" method="POST">
 
                          <input type="number" id="pin" name="pin" placeholder="NEW PIN" required>
                          <input type="number" id="pin" name="cpin" placeholder="Confirm NEW PIN" required>
@@ -113,19 +113,22 @@ if (isset($_POST['updatepin'])) {
      $pin = mysqli_real_escape_string($connect, $_POST['pin']);
      $cpin = mysqli_real_escape_string($connect, $_POST['cpin']);
 
-     echo $pin;
-     echo $cpin;
+     // echo $pin;
+     // echo $cpin;
 
-     // $pin = password_hash($pin, PASSWORD_BCRYPT);
+     $hash_pin = password_hash($pin, PASSWORD_BCRYPT);
      $token = $_GET['token'];
+     // echo $token;
 
      if ($pin == $cpin) {
 
-          $updatequery = "UPDATE employee SET pin='$pin' WHERE pin='$token' ";
+          $updatequery = "UPDATE employee SET pin='$hash_pin' WHERE pin='$token' ";
 
           $iquery = mysqli_query($connect, $updatequery);
      } else {
           echo "Password does not match";
      }
+} else {
+     echo "cannot open this file";
 }
 ?>

@@ -2,12 +2,12 @@
 
 // Username is root 
 $user = 'root';
-$password = 'admin123';
+$password = '';
 
 
 $database = 'truventa';
 
-$servername = 'localhost:3307';
+$servername = 'localhost';
 $mysqli = new mysqli(
      $servername,
      $user,
@@ -289,17 +289,17 @@ $mysqli->close();
 
                                         <table style="margin-top: -30%;" class="table-striped table-hover">
                                              <thead class="bg-success">
-                                             <tr>
-                                                  <th>LID</th>
-                                                  <th>Type</th>
-                                                  <th>From</th>
-                                                  <th>Duration</th>
-                                                  <th>Decision</th>
-                                                  <th>PL Balance</th>
-                                             </tr>
+                                                  <tr>
+                                                       <th>LID</th>
+                                                       <th>Type</th>
+                                                       <th>From</th>
+                                                       <th>Duration</th>
+                                                       <th>Decision</th>
+                                                       <th>PL Balance</th>
+                                                  </tr>
 
                                              </thead>
-                                             
+
                                              <?php
                                              while ($rows = $result->fetch_assoc()) {
                                              ?>
