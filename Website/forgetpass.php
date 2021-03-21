@@ -119,7 +119,7 @@ if (isset($_POST['send'])) {
 
           $subject = "Password Reset";
           $body = "Hi ,$username. Click here too activate your Account
-        http://localhost/reset_password.php?token=$token ";
+        http://localhost/Truventa/Website/reset_password.php?token=$token ";
           $sender_email = "From : siddhantbobde123@gmail.com";
 
           if (mail($email, $subject, $body, $sender_email)) {

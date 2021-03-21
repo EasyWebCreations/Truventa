@@ -1,6 +1,12 @@
 <?php
 
-$empid = $_GET['user'];
+session_start();
+
+if (!isset($_SESSION['name'])) {
+    header('location:../login.php');
+    exit;
+}
+
 
 if (isset($_POST['insert_data'])) {
     //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
@@ -295,6 +301,11 @@ if (isset($_POST['insert_data'])) {
                         <li><a href="#news" class="smoothScroll">Testimonials</a></li>
                         <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
+                        <li class="appointment-btn" style="margin-top: 5px;">
+                            <form action="logout.php" method="GET">
+                                <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
 

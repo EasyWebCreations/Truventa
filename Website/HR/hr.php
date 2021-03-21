@@ -576,7 +576,7 @@ if (isset($_POST['insert_data'])) {
             <div class="column right">
 
                 <div ID="one" class="tabcontent">
-                    <form action="create.php" method="POST">
+                    <form action="hr.php" method="POST">
                         <table class="formtable">
                             <tr>
                                 <th class="tablehead" rowspan="1" colspan="3">Create Account</th>
@@ -586,9 +586,9 @@ if (isset($_POST['insert_data'])) {
                                 <td class="entityd">Designation</td>
 
                                 <td class="entityr" rowspan="1" colspan="3">
-                                    <input type="radio" name="designation" value="mr">
+                                    <input type="radio" name="designation" value="MR">
                                     <label for="mr">MR</label><br>
-                                    <input type="radio" name="designation" value="stockist">
+                                    <input type="radio" name="designation" value="Stock">
                                     <label for="stockist">Stockist</label><br>
                                 </td>
                             </tr>
@@ -609,7 +609,7 @@ if (isset($_POST['insert_data'])) {
 
                             </tr>
                             <tr class="rowentity">
-                                <td class="entity"><span class="dot"><i class="fa fa-envelope" aria-hidden="true"></i></span></td>
+                                <td class="entity"><span class="dot"><i class='fas fa-envelope'></i></span></td>
                                 <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="email" name="email" placeholder="Email"></td>
 
                             </tr>
@@ -629,7 +629,7 @@ if (isset($_POST['insert_data'])) {
             <div ID="two" class="tabcontent">
                 <!-- <h1>second page</h1> -->
                 <div class="main">
-                    <table class="table table-striped table-hover" style="width: 50%;position: relative;top:-350px;">
+                    <table class="table table-striped table-hover">
                         <thead class="bg-success">
                             <tr>
                                 <th scope="col">ID</th>
@@ -668,7 +668,6 @@ if (isset($_POST['insert_data'])) {
                     $password = "";
                     $databaseName = "truventa";
 
-
                     // get values form input text and number
 
                     $mrid = $_POST['mrid'];
@@ -681,7 +680,7 @@ if (isset($_POST['insert_data'])) {
 
                     // mysql query to insert data
 
-                    $query = "INSERT INTO `per`(`mrid`, `month`, `target`, `remarks`) VALUES ('$mrid','$month','$target','$remarks')";
+                    $query = "INSERT INTO `mr_per`(`MRID`, `Target`,`Month`, `remarks`) VALUES ('$mrid','$target','$month','$remarks')";
 
                     $result1 = mysqli_query($connect, $query);
 
@@ -697,13 +696,14 @@ if (isset($_POST['insert_data'])) {
                     //     echo 'Data Not Inserted';
                     // }
 
-
                     mysqli_close($connect);
                 }
 
                 ?>
-                <div style="background-color:#E4E5E6;width:40%;position:relative;top:-400px;margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
-                    <form action="create.php" method="post" style="margin-left:10%;">
+                <div style="background-color:#E4E5E6;width:40%;
+position:relative;top:-400px;
+margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
+                    <form action="hr.php" method="post" style="margin-left:10%;">
                         <h1 style="color:black">Set Target</h1>
                         <div style="display:flex">
 
@@ -737,12 +737,9 @@ if (isset($_POST['insert_data'])) {
                     </form>
 
                 </div>
-
-
             </div>
             <div ID="four" class="tabcontent">
                 <section>
-
                     <!-- TABLE CONSTRUCTION-->
                     <table id="database" class="table table-striped table-hover" style="position:relative;top:-350px">
                         <thead class="bg-success" style="background-color:#5cb85c">
@@ -752,10 +749,8 @@ if (isset($_POST['insert_data'])) {
                                 <th>Type</th>
                                 <th>From</th>
                                 <th>Duration</th>
-
                                 <th>PL Balance</th>
                             </tr>
-
 
                         </thead>
                         <?php   // LOOP TILL END OF DATA  
@@ -763,7 +758,7 @@ if (isset($_POST['insert_data'])) {
                         ?>
                             <tr>
                                 <!--FETCHING DATA FROM EACH  
-                    ROW OF EVERY COLUMN-->
+            ROW OF EVERY COLUMN-->
 
                                 <td><?php echo $rows['id']; ?></td>
                                 <td><?php echo $rows['lid']; ?></td>
@@ -771,9 +766,6 @@ if (isset($_POST['insert_data'])) {
                                 <td><?php echo $rows['fdate']; ?></td>
                                 <td><?php echo $rows['duration']; ?></td>
                                 <td><?php echo $rows['pl_bal']; ?></td>
-
-
-
 
                             </tr>
                         <?php
@@ -783,7 +775,6 @@ if (isset($_POST['insert_data'])) {
                 </section>
 
             </div>
-
         </div>
 
 
@@ -817,26 +808,25 @@ if (isset($_POST['insert_data'])) {
 <?php
 include('connectDB.php');
 
-
-
 if (isset($_POST['create'])) {
     $designation = $_POST['designation'];
     $id = $_POST['id'];
+    $email = $_POST['email'];
     $name = $_POST['name'];
     $mobile = $_POST['mobile'];
     $pin = $_POST['pin'];
 
+    $hash_pin = password_hash($pin, PASSWORD_BCRYPT);
 
-
-    $sql = "INSERT INTO employee (designation,id,name,mobile,pin) VALUES('$designation','$id','$name','$mobile','$pin')";
+    $sql = "INSERT INTO employee (designation,id,name,mobile,pin,email) VALUES('$designation','$id','$name','$mobile','$hash_pin','$email')";
     mysqli_query($connect, $sql);
 
 
-    echo $designation;
-    echo $id;
-    echo $name;
-    echo $mobile;
-    echo $pin;
+    // echo $designation;
+    // echo $id;
+    // echo $name;
+    // echo $mobile;
+    // echo $pin;
 }
 
 ?>
