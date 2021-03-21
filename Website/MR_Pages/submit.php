@@ -33,7 +33,7 @@ else
                     if(mysqli_error($connect))
                     echo " Record insertion error";
                     else
-                    echo "<br>Your Order has been successfully placed<br><a href='template.php'>Click here</a>";
+                    echo "<br>Your Order has been successfully placed<br><a href='MR.php'>Click here</a>";
 
 
                 }
