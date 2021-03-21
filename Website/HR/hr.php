@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['name'])) {
+    header('location:../login.php');
+    exit;
+}
+
 if (isset($_POST['insert_data'])) {
     //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
     $conn = mysqli_connect("localhost", "root", "", "truventa");
@@ -476,6 +483,11 @@ if (isset($_POST['insert_data'])) {
             color: black;
             font-size: 20px;
         }
+        #er2{
+           top:-520px;
+           
+        }
+
     </style>
 </head>
 
@@ -536,6 +548,11 @@ if (isset($_POST['insert_data'])) {
                         <li><a href="#news" class="smoothScroll">Testimonials</a></li>
                         <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
+                        <li class="appointment-btn" style="margin-top: 5px;">
+                            <form action="logout.php" method="GET">
+                                <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
 
@@ -628,10 +645,10 @@ if (isset($_POST['insert_data'])) {
             </div>
             <div ID="two" class="tabcontent">
                 <!-- <h1>second page</h1> -->
-                <div class="main">
-                    <table class="table table-striped table-hover">
+                <div class="main" style=" position:absolute; top:200px; right:0%; width:80%; ">
+                    <table id="er2" class="table table-striped table-hover">
                         <thead class="bg-success">
-                            <tr>
+                            <tr >
                                 <th scope="col">ID</th>
                                 <th scope="col">ROLE</th>
                                 <th scope="col">Name</th>
@@ -650,7 +667,7 @@ if (isset($_POST['insert_data'])) {
                                 <td><?php echo $row['designation']; ?></td>
                                 <td><?php echo $row['name']; ?></td>
                                 <td>
-                                    <a class="btn btn-success" href="index1.php?edit=<?php echo $row['id']; ?>">Click Here</a>
+                                    <a class="btn btn-success" href="employee_record.php?edit=<?php echo $row['id']; ?>">Click Here</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
@@ -741,7 +758,7 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
             <div ID="four" class="tabcontent">
                 <section>
                     <!-- TABLE CONSTRUCTION-->
-                    <table id="database" class="table table-striped table-hover" style="position:relative;top:-350px">
+                    <table id="database1" class="table table-striped table-hover" style="position:relative;top:-350px">
                         <thead class="bg-success" style="background-color:#5cb85c">
                             <tr>
                                 <th>ID</th>
