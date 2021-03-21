@@ -1,14 +1,5 @@
 <?php
 // Username is root 
-if (isset($_POST['update_order'])) {
-include('connectDB.php');
-     $order_id = $_POST['order_id'];
-     $update = $_POST['update'];
-     echo $update;
-     echo $order_id;
-     $sql2 = "UPDATE `orders` SET `status`=$update WHERE `ord_id`=$order_id";
-     $resultt = $mysqli->query($sql2);
-}
 // $emp = $_GET['user'];
 $user = 'root';
 $password = '';
@@ -30,6 +21,15 @@ if ($mysqli->connect_error) {
           $mysqli->connect_errno . ') ' .
           $mysqli->connect_error);
 }
+if (isset($_POST['update_status'])) {
+     include('connectDB.php');
+     $order_id = $_POST['order_id'];
+     $update = $_POST['update'];
+     echo $update;
+     echo $order_id;
+     $sql2 = "UPDATE orders SET status='$update' WHERE ord_id = '$order_id' ";
+     $resultt = $mysqli->query($sql2);
+     }
 
 
 $sql1 = "SELECT * FROM leaves";
@@ -346,9 +346,9 @@ if (isset($_POST['insertdata'])) {
                                         <td><?php echo $roww['product']; ?></td>
                                         <td><?php echo $roww['qty']; ?></td>
                                         <td><?php echo $roww['price']; ?></td>
-                                        <td><form action="home.php" method="post">
+                                        <td><form method="post">
                                         <select name="update" id="update">
-                                             <option value="Accept">Accept</option>
+                                             <option value="Approved">Accept</option>
                                              <optgroup label="Reject">
                                              <option value="CError">Calculation</option>
                                              <option value="OPrice">Valuation</option>
@@ -357,10 +357,11 @@ if (isset($_POST['insertdata'])) {
                                         </select>
                                         <input type="hidden" name="order_id" value="<?php echo $roww['ord_id']; ?>">
                                         <td><input type="submit" name ="update_status" value="Submit"></td>
-                                   </form></td>
+                              </form></td>
                                    </tr>
                                    
                               <?php endwhile; ?>
+
                          </table>
                     </div>
                </div>
@@ -370,14 +371,12 @@ if (isset($_POST['insertdata'])) {
 
                     <?php
 
-                    $sql3 = "SELECT * FROM orders where status='Approved' ";
+                    $sql3 = "SELECT * FROM orders where status='Approved' OR status='Paid' OR status='PartPaid' ";
                     $resulttt = $mysqli->query($sql3);
-
-
                     ?>
 
-                    <div class="row " style="margin: 5%;">
-                         <table class="table table-striped table-hover" style="width:50%">
+                    <div class="row " style="margin: 2%;">
+                         <table class="table table-striped table-hover" style="width:60%">
                               <thead class="bg-success" style="background-color:#00B74A">
                                    <tr>
                                         <th>Date</th>
@@ -385,6 +384,9 @@ if (isset($_POST['insertdata'])) {
                                         <th>Product</th>
                                         <th>Quantity</th>
                                         <th>Status</th>
+                                        <th>₹</th>
+                                        <th>Decide</th>
+                                        <th>Update</th>
                                    </tr>
                               </thead>
                               <?php
@@ -395,6 +397,19 @@ if (isset($_POST['insertdata'])) {
                                         <td><?php echo $row2['product']; ?></td>
                                         <td><?php echo $row2['qty']; ?></td>
                                         <td><?php echo $row2['status']; ?></td>
+                                        <td><?php echo $row2['price']; ?></td>
+                                        <td><form method="post">
+                                        <select name="update" id="update">
+                                             <option value="Approved">Approved</option>
+                                             <optgroup label="Update">
+                                             <option value="Paid">Paid</option>
+                                             <option value="PartPaid">Part paid</option>
+                                             <option value="Delivered">Delivered</option>
+                                             </optgroup>
+                                        </select>
+                                        <input type="hidden" name="order_id" value="<?php echo $row2['ord_id']; ?>">
+                                        <td><input type="submit" name ="update_status" value="Submit"></td>
+                              </form></td>
                                    </tr>
                               <?php endwhile; ?>
                          </table>
@@ -405,7 +420,7 @@ if (isset($_POST['insertdata'])) {
 
                     <?php
 
-                    $sql4 = "SELECT * FROM orders where status='Completed' ";
+                    $sql4 = "SELECT * FROM orders where status='Delivered' ";
                     $result3 = $mysqli->query($sql4);
 
 
