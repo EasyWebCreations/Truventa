@@ -758,7 +758,8 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
                     <table id="database" class="table table-striped table-hover" style="margin-top:0%;margin-left:25%;width:60%">
                         <thead class="bg-success" style="background-color:#5cb85c">
                             <tr>
-                                <th>ID</th>
+                                <th>Leave Id</th>
+                                <th>Emp ID</th>
                                 <th>Desig</th>
                                 <th>From</th>
                                 <th>Duration</th>
@@ -775,7 +776,7 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
                             <tr>
                                 <!--FETCHING DATA FROM EACH  
             ROW OF EVERY COLUMN-->
-
+                                <td><?php echo $rows['lid']; ?></td>
                                 <td><?php echo $rows['id']; ?></td>
                                 <td><?php echo $rows['designation']; ?></td>
                                 <td><?php echo $rows['fdate']; ?></td>
