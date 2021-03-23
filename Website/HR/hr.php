@@ -1,4 +1,14 @@
 <?php
+
+if (isset($_POST['update_leave'])) {
+    $conn = mysqli_connect("localhost", "root", "", "truventa");
+    $lid = $_POST['lid'];
+    $update = $_POST['update'];
+    $sql2 = "UPDATE `leaves` SET `decision`='$update' WHERE `lid` = $lid ";
+    $resultt = $conn->query($sql2);
+    }
+
+
 if (isset($_POST['insert_data'])) {
     //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
     $conn = mysqli_connect("localhost", "root", "", "truventa");
@@ -739,17 +749,23 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
                 </div>
             </div>
             <div ID="four" class="tabcontent">
+            <?php
+                    include('connectDB.php');
+                    $result = $connect->query("SELECT * FROM leaves where `decision`='Pending' ORDER BY `fdate` DESC ");
+            ?>
                 <section>
                     <!-- TABLE CONSTRUCTION-->
-                    <table id="database" class="table table-striped table-hover" style="position:relative;top:-350px">
+                    <table id="database" class="table table-striped table-hover" style="margin-top:0%;margin-left:25%;width:60%">
                         <thead class="bg-success" style="background-color:#5cb85c">
                             <tr>
                                 <th>ID</th>
-                                <th>LEAVE ID</th>
-                                <th>Type</th>
+                                <th>Desig</th>
                                 <th>From</th>
                                 <th>Duration</th>
-                                <th>PL Balance</th>
+                                <th>PL Bal</th>
+                                <th>Remark</th>
+                                <th>Status</th>
+                                <th>Decision</th>
                             </tr>
 
                         </thead>
@@ -761,12 +777,21 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
             ROW OF EVERY COLUMN-->
 
                                 <td><?php echo $rows['id']; ?></td>
-                                <td><?php echo $rows['lid']; ?></td>
-                                <td><?php echo $rows['type']; ?></td>
+                                <td><?php echo $rows['designation']; ?></td>
                                 <td><?php echo $rows['fdate']; ?></td>
                                 <td><?php echo $rows['duration']; ?></td>
                                 <td><?php echo $rows['pl_bal']; ?></td>
-
+                                <td><?php echo $rows['remarks']; ?></td>
+                                <td><form method="post">
+                                        <select name="update" id="update">
+                                            <option value="Pending">Pending</option>
+                                            <option value="Accepted">Accept</option>
+                                            <option value="Rejected">Reject</option>
+                                        </select>
+                                        <input type="hidden" name="lid" value="<?php echo $rows['lid']; ?>">
+                                        <td><input type="submit" name ="update_leave" value="Submit"></td>
+                                    </form>
+                                </td>
                             </tr>
                         <?php
                         }
