@@ -765,7 +765,7 @@ margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
             <div ID="four" class="tabcontent">
             <?php
                     include('connectDB.php');
-                    $result = $connect->query("SELECT * FROM leaves where `decision`='Pending' ORDER BY `fdate` DESC ");
+                    $result = $connect->query("SELECT * FROM leaves where `decision`='Pending' AND `designation`!='HR' ORDER BY `fdate` DESC ");
             ?>
                 <section>
                     <!-- TABLE CONSTRUCTION-->
