@@ -10,7 +10,6 @@ if (isset($_POST['insert_data'])) {
     //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
     $conn = mysqli_connect("localhost", "root", "", "truventa");
 
-
     $id = $_POST['id'];
     $type = $_POST['type'];
     $fdate = $_POST['fdate'];
@@ -483,11 +482,11 @@ if (isset($_POST['insert_data'])) {
             color: black;
             font-size: 20px;
         }
-        #er2{
-           top:-520px;
-           
-        }
 
+        #er2 {
+            top: -520px;
+
+        }
     </style>
 </head>
 
@@ -648,7 +647,7 @@ if (isset($_POST['insert_data'])) {
                 <div class="main" style=" position:absolute; top:200px; right:0%; width:80%; ">
                     <table id="er2" class="table table-striped table-hover">
                         <thead class="bg-success">
-                            <tr >
+                            <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">ROLE</th>
                                 <th scope="col">Name</th>

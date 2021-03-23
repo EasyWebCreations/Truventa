@@ -18,13 +18,14 @@ if (isset($_POST["login"])) {
     $pass_decode = password_verify($pass, $userdata['pin']);
 
     $_SESSION['name'] = $userdata['name'];
+    $_SESSION['id'] = $userdata['id'];
 
     if ($pass_decode) {
         $designation = $userdata['designation'];
         if ($designation == 'MR') {
             header("Location: MR_Pages/MR.php?user=" . $user);
         } elseif ($designation == 'HR') {
-            header("Location: HR/create.php?user=" . $user);
+            header("Location: HR/hr.php?user=" . $user);
         } elseif ($designation == 'Stock') {
             header("Location: Stockist/home.php?user=" . $user);
         } else {

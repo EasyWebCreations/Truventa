@@ -124,7 +124,7 @@ if (isset($_POST['send'])) {
 
           if (mail($email, $subject, $body, $sender_email)) {
                $_SESSION['msg'] = "check your mail to reset your password $email";
-               header('location:login.html');
+               header('location:login.php');
           } else {
                echo "Email sending Failed";
           }

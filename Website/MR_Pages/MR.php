@@ -13,7 +13,7 @@ if (isset($_POST['insert_data'])) {
     $conn = mysqli_connect("localhost", "root", "", "truventa");
 
 
-    $id = $_POST['id'];
+    $id = $_SESSION['id'];
     $type = $_POST['type'];
     $fdate = $_POST['fdate'];
     $duration = $_POST['duration'];
@@ -24,9 +24,9 @@ if (isset($_POST['insert_data'])) {
     $fetched_result = $pl_result->fetch_assoc();
     $past_leaves = $fetched_result["SUM(duration)"];
     $plb = 18 - $past_leaves;
-    echo $plb;
+    // echo $plb;
     // echo $accepted_leaves;
-    $sql = "INSERT INTO leaves(id,`type`,fdate,duration,remarks,pl_bal) VALUES ('$id','$type','$fdate','$duration','$remarks',$plb)";
+    $sql = "INSERT INTO leaves(id,designation,`type`,fdate,duration,remarks,decision,pl_bal) VALUES ('$id','MR','$type','$fdate','$duration','$remarks','Pending',$plb)";
 
     $sql1 = "SELECT * FROM leaves ORDER BY fdate DESC";
     $result = $conn->query($sql1);
@@ -433,7 +433,8 @@ if (isset($_POST['insert_data'])) {
             <div ID="two" class="tabcontent">
                 <?php include('connectDB.php'); ?>
                 <?php
-                $result = $connect->query("SELECT * FROM orders ORDER BY `date` DESC");
+                $id = $_SESSION['id'];
+                $result = $connect->query("SELECT * FROM orders where mrid=$id  ORDER BY `date` DESC");
                 ?>
 
                 <div class="row " style="margin: 5%;">
@@ -464,7 +465,7 @@ if (isset($_POST['insert_data'])) {
             <div ID="three" class="tabcontent">
                 <?php include('connectDB.php'); ?>
                 <?php
-                $result = $connect->query("SELECT * FROM orders ORDER BY `date` DESC");
+                $result = $connect->query("SELECT * FROM orders where mrid=$id ORDER BY `date` DESC");
                 ?>
 
                 <div class="row " style="margin: 5%;">
@@ -496,7 +497,7 @@ if (isset($_POST['insert_data'])) {
             </div>
 
             <div ID="four" class="tabcontent">
-
+                <!-- ADD YOUR PROGRESS -->
             </div>
 
             <div ID="five" class="tabcontent">
@@ -518,10 +519,10 @@ if (isset($_POST['insert_data'])) {
 
                         <div id="menu1" class="tab-pane fade">
                             <h3 style="color:white">Menu 1</h3>
-                            <form action="template.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST">
+                            <form action="MR.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST">
                                 <div style="display: flex;">
 
-                                    <input type="number" style="width: 45%;margin-right:10%;height: 40px;" id="quantity" name="id" placeholder="Employee ID">
+                                    <input type="number" style="width: 45%;margin-right:10%;height: 40px;" id="quantity" value="$id" name="id" placeholder="Employee ID">
 
                                     <br>
                                     <div style="display:flex;background-color:white;width:200px;height: 40px;padding:8px">
