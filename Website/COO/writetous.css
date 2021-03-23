@@ -1,0 +1,492 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+   
+    
+    .slide-box{
+      border-collapse: collapse;
+      background-color: white;
+      margin-top: 15%;
+      
+    }
+    
+    .fa fa-shopping-basket{
+        font-size:36px;
+    }
+    .fa fa-truck{
+        font-size:36px;
+    }
+    .fa fa-bar-chart{
+        font-size:36px
+    }
+    .fa fa-history{
+        font-size:36px
+       
+    }
+    .material-icons{
+        font-size:30px;
+        margin-top: 5px;   
+    }
+    .iconbox{
+    
+    text-align: center;
+    font-size: 25px;
+    width: 55px;
+    height: 50px;
+    }
+    .table2{
+      border: 1px solid black;
+      width: 70%; 
+      margin-left: 15%;
+      
+    
+    }
+    .table2:hover{
+        background-color: #9cc400;
+       
+        
+    }
+    .borderbox{
+      width: 80%;
+    }  
+    
+    .tabbuttons1{
+      padding-left: 8%;
+      text-align: center;
+      font-size:20px;
+      width: 30px;
+      line-height: 1;
+      
+    }
+    
+    #trackorders{font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 50%;
+      }
+    
+    #trackorders td {
+    border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    #trackorders th{
+        border: 1px solid #ddd;
+      text-align: center;}
+    #trackorders tr:nth-child(even){background-color: #f2f2f2;}
+    #trackorders tr:hover {background-color: #ddd;}
+    .tabcontent{
+        margin-top: 10%;
+        margin-left: 13%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+   *{ box-sizing: border-box;
+  }
+  
+  /* Create two unequal columns that floats next to each other */
+  .column {
+    float: left;
+    padding: 10px;
+    height: 500px; /* Should be removed. Only for demonstration */
+  }
+  
+  .left {
+    width: 35%;
+  }
+  
+  .right {
+    width: 65%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .slide-box{
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 15%;
+    
+  }
+  
+  .fa fa-shopping-basket{
+      font-size:36px;
+  }
+  .fa fa-truck{
+      font-size:36px;
+  }
+  .fa fa-bar-chart{
+      font-size:36px
+  }
+  .fa fa-history{
+      font-size:36px
+     
+  }
+  .material-icons{
+      font-size:20px;
+      margin-top: 5px;   
+  }
+  .iconbox{
+  
+  text-align: center;
+  font-size: 15px;
+  width: 55px;
+  height: 50px;
+  }
+  .table2{
+    border: 1px solid black;
+    width: 70%; 
+    margin-left: 15%;
+    
+  
+  }
+  .table2:hover{
+      background-color: #9cc400;
+     
+      
+  }
+  .borderbox{
+    width: 80%;
+  }  
+  
+  .tabbuttons1{
+    padding-left: 8%;
+    text-align: center;
+    font-size:10px;
+    width: 30px;
+    line-height: 1;
+    
+  }
+  
+  #trackorders{font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    }
+  
+  #trackorders td {
+      border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  #trackorders th{
+      border: 1px solid #ddd;
+    text-align: center;}
+  #trackorders tr:nth-child(even){background-color: #f2f2f2;}
+  #trackorders tr:hover {background-color: #ddd;}
+  .tabcontent{
+      margin-top: 10%;}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {* {
+    box-sizing: border-box;
+  }
+  
+  /* Create two unequal columns that floats next to each other */
+  .column {
+    float: left;
+    padding: 10px;
+    height: 500px; /* Should be removed. Only for demonstration */
+  }
+  
+  .left {
+    width: 35%;
+  }
+  
+  .right {
+    width: 65%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .slide-box{
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 15%;
+    
+  }
+  
+  .fa fa-shopping-basket{
+      font-size:36px;
+  }
+  .fa fa-truck{
+      font-size:36px;
+  }
+  .fa fa-bar-chart{
+      font-size:36px
+  }
+  .fa fa-history{
+      font-size:36px
+     
+  }
+  .material-icons{
+      font-size:36px;
+      margin-top: 5xpx;   
+  }
+  .iconbox{
+  
+  text-align: center;
+  font-size: 25px;
+  width: 55px;
+  height: 50px;
+  }
+  .table2{
+    border: 1px solid black;
+    width: 70%; 
+    margin-left: 15%;
+    
+  
+  }
+  .table2:hover{
+      background-color: #9cc400;
+     
+      
+  }
+  .borderbox{
+    width: 80%;
+  }  
+  
+  .tabbuttons1{
+    padding-left: 8%;
+    text-align: center;
+    font-size:15px;
+    width: 30px;
+    line-height: 1;
+    
+  }
+  
+  #trackorders{font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    }
+  
+  #trackorders td {
+      border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  #trackorders th{
+      border: 1px solid #ddd;
+    text-align: center;}
+  #trackorders tr:nth-child(even){background-color: #f2f2f2;}
+  #trackorders tr:hover {background-color: #ddd;}
+  .tabcontent{
+      margin-top: 10%;}}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    * {
+        box-sizing: border-box;
+      }
+      
+      /* Create two unequal columns that floats next to each other */
+      .column {
+        float: left;
+        padding: 10px;
+        height: 500px; /* Should be removed. Only for demonstration */
+      }
+      
+      .left {
+        width: 35%;
+      }
+      
+      .right {
+        width: 65%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      .slide-box{
+        border-collapse: collapse;
+        background-color: white;
+        margin-top: 15%;
+        
+      }
+      
+      .fa fa-shopping-basket{
+          font-size:36px;
+      }
+      .fa fa-truck{
+          font-size:36px;
+      }
+      .fa fa-bar-chart{
+          font-size:36px
+      }
+      .fa fa-history{
+          font-size:36px
+         
+      }
+      .material-icons{
+          font-size:36px;
+          margin-top: 5xpx;   
+      }
+      .iconbox{
+      
+      text-align: center;
+      font-size: 30px;
+      width: 55px;
+      height: 50px;
+      }
+      .table2{
+        border: 1px solid black;
+        width: 70%; 
+        margin-left: 15%;
+        
+      
+      }
+      .table2:hover{
+          background-color: #9cc400;
+         
+          
+      }
+      .borderbox{
+        width: 80%;
+      }  
+      
+      .tabbuttons1{
+        padding-left: 8%;
+        text-align: center;
+        font-size:20px;
+        width: 30px;
+        line-height: 1;
+        
+      }
+      
+      #trackorders{font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        }
+      
+      #trackorders td {
+          border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      #trackorders th{
+          border: 1px solid #ddd;
+        text-align: center;}
+      #trackorders tr:nth-child(even){background-color: #f2f2f2;}
+      #trackorders tr:hover {background-color: #ddd;}
+      .tabcontent{
+          margin-top: 10%;}
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    * {
+        box-sizing: border-box;
+      }
+      
+      /* Create two unequal columns that floats next to each other */
+      .column {
+        float: left;
+        padding: 10px;
+        height: 500px; /* Should be removed. Only for demonstration */
+      }
+      
+      .left {
+        width: 35%;
+      }
+      
+      .right {
+        width: 65%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      .slide-box{
+        border-collapse: collapse;
+        background-color: white;
+        margin-top: 15%;
+        
+      }
+      
+      .fa fa-shopping-basket{
+          font-size:36px;
+      }
+      .fa fa-truck{
+          font-size:36px;
+      }
+      .fa fa-bar-chart{
+          font-size:36px
+      }
+      .fa fa-history{
+          font-size:36px
+         
+      }
+      .material-icons{
+          font-size:36px;
+          margin-top: 5xpx;   
+      }
+      .iconbox{
+      
+      text-align: center;
+      font-size: 35px;
+      width: 55px;
+      height: 50px;
+      }
+      .table2{
+        border: 1px solid black;
+        width: 70%; 
+        margin-left: 15%;
+        
+      
+      }
+      .table2:hover{
+          background-color: #9cc400;
+         
+          
+      }
+      .borderbox{
+        width: 80%;
+      }  
+      
+      .tabbuttons1{
+        padding-left: 8%;
+        text-align: center;
+        font-size:30px;
+        width: 30px;
+        line-height: 1;
+        
+      }
+      
+      #trackorders{font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        }
+      
+      #trackorders td {
+          border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      #trackorders th{
+          border: 1px solid #ddd;
+        text-align: center;}
+      #trackorders tr:nth-child(even){background-color: #f2f2f2;}
+      #trackorders tr:hover {background-color: #ddd;}
+      .tabcontent{
+          margin-top: 10%;}
+}
