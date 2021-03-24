@@ -302,7 +302,7 @@ if (isset($_POST['insert_data'])) {
                         <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
                         <li class="appointment-btn" style="margin-top: 5px;">
-                            <form action="logout.php" method="GET">
+                            <form action="../logout.php" method="GET">
                                 <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
                             </form>
                         </li>

@@ -1,10 +1,18 @@
 <?php
 // Username is root 
 // $emp = $_GET['user'];
+
+session_start();
+
+if (!isset($_SESSION['name'])) {
+     header('location:../login.php');
+     exit;
+}
+
+$id = $_SESSION['id'];
+
 $user = 'root';
 $password = '';
-
-
 $database = 'truventa';
 
 $servername = 'localhost';
@@ -29,7 +37,7 @@ if (isset($_POST['update_status'])) {
      echo $order_id;
      $sql2 = "UPDATE orders SET status='$update' WHERE ord_id = '$order_id' ";
      $resultt = $mysqli->query($sql2);
-     }
+}
 
 
 $sql1 = "SELECT * FROM leaves";
@@ -264,6 +272,11 @@ if (isset($_POST['insertdata'])) {
                               <li><a href="#news" class="smoothScroll">Testimonials</a></li>
                               <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                               <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
+                              <li class="appointment-btn" style="margin-top: 5px;">
+                                   <form action="../logout.php" method="GET">
+                                        <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
+                                   </form>
+                              </li>
                          </ul>
                     </div>
 
@@ -346,20 +359,22 @@ if (isset($_POST['insertdata'])) {
                                         <td><?php echo $roww['product']; ?></td>
                                         <td><?php echo $roww['qty']; ?></td>
                                         <td><?php echo $roww['price']; ?></td>
-                                        <td><form method="post">
-                                        <select name="update" id="update">
-                                             <option value="Approved">Accept</option>
-                                             <optgroup label="Reject">
-                                             <option value="CError">Calculation</option>
-                                             <option value="OPrice">Valuation</option>
-                                             <option value="OStock">Stock</option>
-                                             </optgroup>
-                                        </select>
-                                        <input type="hidden" name="order_id" value="<?php echo $roww['ord_id']; ?>">
-                                        <td><input type="submit" name ="update_status" value="Submit"></td>
-                              </form></td>
+                                        <td>
+                                             <form method="post">
+                                                  <select name="update" id="update">
+                                                       <option value="Approved">Accept</option>
+                                                       <optgroup label="Reject">
+                                                            <option value="CError">Calculation</option>
+                                                            <option value="OPrice">Valuation</option>
+                                                            <option value="OStock">Stock</option>
+                                                       </optgroup>
+                                                  </select>
+                                                  <input type="hidden" name="order_id" value="<?php echo $roww['ord_id']; ?>">
+                                        <td><input type="submit" name="update_status" value="Submit"></td>
+                                        </form>
+                                        </td>
                                    </tr>
-                                   
+
                               <?php endwhile; ?>
 
                          </table>
@@ -398,18 +413,20 @@ if (isset($_POST['insertdata'])) {
                                         <td><?php echo $row2['qty']; ?></td>
                                         <td><?php echo $row2['status']; ?></td>
                                         <td><?php echo $row2['price']; ?></td>
-                                        <td><form method="post">
-                                        <select name="update" id="update">
-                                             <option value="Approved">Approved</option>
-                                             <optgroup label="Update">
-                                             <option value="Paid">Paid</option>
-                                             <option value="PartPaid">Part paid</option>
-                                             <option value="Delivered">Delivered</option>
-                                             </optgroup>
-                                        </select>
-                                        <input type="hidden" name="order_id" value="<?php echo $row2['ord_id']; ?>">
-                                        <td><input type="submit" name ="update_status" value="Submit"></td>
-                              </form></td>
+                                        <td>
+                                             <form method="post">
+                                                  <select name="update" id="update">
+                                                       <option value="Approved">Approved</option>
+                                                       <optgroup label="Update">
+                                                            <option value="Paid">Paid</option>
+                                                            <option value="PartPaid">Part paid</option>
+                                                            <option value="Delivered">Delivered</option>
+                                                       </optgroup>
+                                                  </select>
+                                                  <input type="hidden" name="order_id" value="<?php echo $row2['ord_id']; ?>">
+                                        <td><input type="submit" name="update_status" value="Submit"></td>
+                                        </form>
+                                        </td>
                                    </tr>
                               <?php endwhile; ?>
                          </table>
@@ -455,109 +472,109 @@ if (isset($_POST['insertdata'])) {
 
 
 
-               <div class="container" style="margin-left: 30%;margin-top: -5%;">
+                    <div class="container" style="margin-left: 30%;margin-top: -5%;">
 
 
-<ul id="navigation" class="nav nav-pills" style="margin-left: 30%;">
+                         <ul id="navigation" class="nav nav-pills" style="margin-left: 30%;">
 
-     <li class="first_back" style="border: 2px solid;border-top-left-radius: 25px;border-bottom-left-radius: 25px;">
+                              <li class="first_back" style="border: 2px solid;border-top-left-radius: 25px;border-bottom-left-radius: 25px;">
 
-          <a data-toggle="pill" id="first" href="#menu1" class="li first" style="font-size: 20px;color:black;">New Application</a>
-     </li>
-     <li class="second_back" id="li" style="background-color:lightgray;border: 2px solid;border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
-          <a data-toggle="pill" class="second" id="second" href="#menu2" style="font-size: 20px;color:black;">Application History</a>
-     </li>
+                                   <a data-toggle="pill" id="first" href="#menu1" class="li first" style="font-size: 20px;color:black;">New Application</a>
+                              </li>
+                              <li class="second_back" id="li" style="background-color:lightgray;border: 2px solid;border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
+                                   <a data-toggle="pill" class="second" id="second" href="#menu2" style="font-size: 20px;color:black;">Application History</a>
+                              </li>
 
-</ul>
+                         </ul>
 
-<div class="tab-content">
+                         <div class="tab-content">
 
-     <div id="menu1" class="tab-pane fade">
-          <h3 style="color:white">Menu 1</h3>
-          <form action="home.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST">
-               <div style="display: flex;">
+                              <div id="menu1" class="tab-pane fade">
+                                   <h3 style="color:white">Menu 1</h3>
+                                   <form action="home.php" id="form" style="background-color:#E4E5E6;border:2px solid black" method="POST">
+                                        <div style="display: flex;">
 
-                    <input type="number" style="width: 45%;margin-right:10%;height: 40px;color: black;text-align:center;
+                                             <input type="number" style="width: 45%;margin-right:10%;height: 40px;color: black;text-align:center;
 font-size: 20px; " id="quantity" name="id" placeholder="Employee ID" value="<?php echo $emp; ?>">
 
-                    <br>
-                    <div style="display:flex;background-color:white;width:200px;height: 40px;padding:8px">
-                         <p style="font-size:15px;margin-left:15%;color: black;
+                                             <br>
+                                             <div style="display:flex;background-color:white;width:200px;height: 40px;padding:8px">
+                                                  <p style="font-size:15px;margin-left:15%;color: black;
 font-size: 20px; ">Type</p>
-                         <select style="width: 15%;width:25%;background-color:#A4C31D;;color:black;margin-left:35%;" id="type" name="type" placeholder="TYPE">
-                              <option value="PL">PL</option>
-                              <option value="CL">CL</option>
-                              <option value="SL">SL</option>
+                                                  <select style="width: 15%;width:25%;background-color:#A4C31D;;color:black;margin-left:35%;" id="type" name="type" placeholder="TYPE">
+                                                       <option value="PL">PL</option>
+                                                       <option value="CL">CL</option>
+                                                       <option value="SL">SL</option>
 
-                         </select>
-                    </div>
+                                                  </select>
+                                             </div>
 
-               </div>
+                                        </div>
 
-               <br>
-               <div style="display: flex;">
-                    <input style="width: 45%;margin-right:10%;height: 40px;
+                                        <br>
+                                        <div style="display: flex;">
+                                             <input style="width: 45%;margin-right:10%;height: 40px;
 color: black;
 font-size: 20px; " id="datePicker" type="date" name="fdate">
 
-                    <br>
-                    <input style="width: 45%;height: 40px;color: black;text-align:center;
+                                             <br>
+                                             <input style="width: 45%;height: 40px;color: black;text-align:center;
 font-size: 20px;" type="number" id="duration" name="duration" placeholder="Duration">
-                    <br>
-                    <br>
-               </div>
-               <br>
+                                             <br>
+                                             <br>
+                                        </div>
+                                        <br>
 
-               <input style="width:100%;height:100px;color: black;text-align:center;
+                                        <input style="width:100%;height:100px;color: black;text-align:center;
 font-size: 20px; " type="text" id="remarks" name="remarks" placeholder="Enter remarks"><br>
-               <br>
-               <input style="width:30%;height:40px;background-color:#A4C31D;border:none;font-weight:bold;font-size:20px;color:white;margin-left:70%" type="submit" name="insertdata">
-          </form>
+                                        <br>
+                                        <input style="width:30%;height:40px;background-color:#A4C31D;border:none;font-weight:bold;font-size:20px;color:white;margin-left:70%" type="submit" name="insertdata">
+                                   </form>
 
-     </div>
-     <div id="menu2" class="tab-pane fade">
+                              </div>
+                              <div id="menu2" class="tab-pane fade">
 
-          <!-- hjjhds -->
+                                   <!-- hjjhds -->
 
-          <?php
+                                   <?php
 
-          $sql4 = "SELECT * FROM leaves";
-          $result3 = $mysqli->query($sql4);
-
-
-          ?>
-
-          <div class="row " style="margin: 5%;">
-               <table class="table table-striped table-hover" style="width:80%;margin-top:-40%;margin-left:-10%">
-                    <thead class="bg-success" style="background-color:#00B74A">
-                         <tr>
-                              <th>Leave ID</th>
-                              <th>Type</th>
-                              <th>From</th>
-                              <th>Duration</th>
-                              <th>Decision</th>
-                              <th>PL Balance</th>
-                         </tr>
-                    </thead>
-                    <?php
-                    while ($row3 = $result3->fetch_assoc()) : ?>
-                         <tr>
-                              <td><?php echo $row3['lid']; ?></td>
-                              <td><?php echo $row3['type']; ?></td>
-                              <td><?php echo $row3['fdate']; ?></td>
-                              <td><?php echo $row3['duration']; ?></td>
-                              <td><?php echo $row3['decision']; ?></td>
-                              <td><?php echo $row3['pl_bal']; ?></td>
-                         </tr>
-                    <?php endwhile; ?>
-               </table>
-          </div>
+                                   $sql4 = "SELECT * FROM leaves";
+                                   $result3 = $mysqli->query($sql4);
 
 
-     </div>
+                                   ?>
 
-</div>
-</div>
+                                   <div class="row " style="margin: 5%;">
+                                        <table class="table table-striped table-hover" style="width:80%;margin-top:-40%;margin-left:-10%">
+                                             <thead class="bg-success" style="background-color:#00B74A">
+                                                  <tr>
+                                                       <th>Leave ID</th>
+                                                       <th>Type</th>
+                                                       <th>From</th>
+                                                       <th>Duration</th>
+                                                       <th>Decision</th>
+                                                       <th>PL Balance</th>
+                                                  </tr>
+                                             </thead>
+                                             <?php
+                                             while ($row3 = $result3->fetch_assoc()) : ?>
+                                                  <tr>
+                                                       <td><?php echo $row3['lid']; ?></td>
+                                                       <td><?php echo $row3['type']; ?></td>
+                                                       <td><?php echo $row3['fdate']; ?></td>
+                                                       <td><?php echo $row3['duration']; ?></td>
+                                                       <td><?php echo $row3['decision']; ?></td>
+                                                       <td><?php echo $row3['pl_bal']; ?></td>
+                                                  </tr>
+                                             <?php endwhile; ?>
+                                        </table>
+                                   </div>
+
+
+                              </div>
+
+                         </div>
+                    </div>
 
                </div>
           </div>

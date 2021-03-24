@@ -28,6 +28,8 @@ if (isset($_POST["login"])) {
             header("Location: HR/hr.php?user=" . $user);
         } elseif ($designation == 'Stock') {
             header("Location: Stockist/home.php?user=" . $user);
+        } elseif ($designation == 'COO') {
+            header("Location: COO/home.php?user=" . $user);
         } else {
             echo "<h3>Invalid ID or password!</h3>";
         }

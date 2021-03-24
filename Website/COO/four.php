@@ -1,12 +1,20 @@
 <?php
 // Username is root 
 $user = 'root';
-$password = 'admin123';
+$password = '';
+
+
+session_start();
+
+if (!isset($_SESSION['name'])) {
+     header('location:../login.php');
+     exit;
+}
 
 
 $database = 'truventa';
 
-$servername = 'localhost:3307';
+$servername = 'localhost';
 $mysqli = new mysqli(
      $servername,
      $user,
@@ -30,7 +38,7 @@ if (isset($_POST['decide_leave'])) {
      echo $lid;
      $sql2 = "UPDATE leaves SET decision='$decide' WHERE lid = '$lid' ";
      $resultt = $mysqli->query($sql2);
-     }
+}
 
 $sql1 = "SELECT * FROM leaves";
 $result = $mysqli->query($sql1);
@@ -40,7 +48,7 @@ $result = $mysqli->query($sql1);
 <?php
 if (isset($_POST['insertdata'])) {
      //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
-     $conn = mysqli_connect("localhost:3307", "root", "admin123", "truventa");
+     $conn = mysqli_connect("localhost", "root", "", "truventa");
 
 
      $id = $_POST['id'];
@@ -111,7 +119,9 @@ if (isset($_POST['insertdata'])) {
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <style>
-          .second:hover,.nav-pills>li.active>.second, .nav-pills>li.active>.second:focus{
+          .second:hover,
+          .nav-pills>li.active>.second,
+          .nav-pills>li.active>.second:focus {
                background-color: #A4C31D;
                border-top-right-radius: 25px;
                border-bottom-right-radius: 25px;
@@ -119,14 +129,16 @@ if (isset($_POST['insertdata'])) {
                border-bottom-left-radius: 0px;
           }
 
-          .first:hover,.nav-pills>li.active>.first, .nav-pills>li.active>.first:focus{
+          .first:hover,
+          .nav-pills>li.active>.first,
+          .nav-pills>li.active>.first:focus {
                background-color: #A4C31D;
                border-top-left-radius: 25px;
                border-bottom-left-radius: 25px;
                border-top-right-radius: 0px;
                border-bottom-right-radius: 0px;
           }
-          
+
           table {
                margin: 0 auto;
                font-size: large;
@@ -165,34 +177,42 @@ if (isset($_POST['insertdata'])) {
           td {
                font-weight: lighter;
           }
-          input[type="date"]::-webkit-calendar-picker-indicator {
-    
-    opacity: 1;
-    display: block;
-    background-color: #A4C31D;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
-    color:white;
-    border:2px solid black;
-}
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-   color: black;
-   font-size: 20px; 
-}
-::-moz-placeholder { /* Firefox 19+ */
-   color: black;
-   font-size: 20px; 
-}
-:-ms-input-placeholder { /* IE 10+ */
-   color: black;
-   font-size: 20px; 
-}
-:-moz-placeholder { /* Firefox 18- */
-   color: black;
-   font-size: 20px;
-}
+          input[type="date"]::-webkit-calendar-picker-indicator {
+
+               opacity: 1;
+               display: block;
+               background-color: #A4C31D;
+               width: 20px;
+               height: 20px;
+               border-width: thin;
+               color: white;
+               border: 2px solid black;
+          }
+
+          ::-webkit-input-placeholder {
+               /* Chrome/Opera/Safari */
+               color: black;
+               font-size: 20px;
+          }
+
+          ::-moz-placeholder {
+               /* Firefox 19+ */
+               color: black;
+               font-size: 20px;
+          }
+
+          :-ms-input-placeholder {
+               /* IE 10+ */
+               color: black;
+               font-size: 20px;
+          }
+
+          :-moz-placeholder {
+               /* Firefox 18- */
+               color: black;
+               font-size: 20px;
+          }
      </style>
 </head>
 
@@ -253,6 +273,12 @@ if (isset($_POST['insertdata'])) {
                               <li><a href="#news" class="smoothScroll">Testimonials</a></li>
                               <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                               <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
+                              <li class="appointment-btn" style="margin-top: 5px;">
+                                   <form action="../logout.php" method="GET">
+                                        <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
+                                   </form>
+                              </li>
+
                          </ul>
                     </div>
 
@@ -264,34 +290,34 @@ if (isset($_POST['insertdata'])) {
                <div class="column left">
                     <table class="slide-box">
 
-                    <table class="slide-box">
+                         <table class="slide-box">
 
-<table class="table2" class="menu">
-     <tr>
-          <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
-          <td class="borderbox"> <a class="tabbuttons1" href="home.php"  style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-truck"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="two.php"  style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="three.php"  style="color:black;font-size:25px"> <b>Set Target</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="four.php"  style="color:black;font-size:25px"> <b>Leave Applications</b></a></td>
-     </tr>
-</table>
-       
-                         
+                              <table class="table2" class="menu">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
+                                        <td class="borderbox"> <a class="tabbuttons1" href="home.php" style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-truck"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="two.php" style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="three.php" style="color:black;font-size:25px"> <b>Set Target</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="four.php" style="color:black;font-size:25px"> <b>Leave Applications</b></a></td>
+                                   </tr>
+                              </table>
+
+
                </div>
 
                </table>
@@ -301,70 +327,72 @@ if (isset($_POST['insertdata'])) {
                <div ID="one" class="tabcontent">
 
 
-                         <?php
-    
-                         $sql4 = "SELECT * FROM leaves where decision='Pending' ";
-                         $result3 = $mysqli->query($sql4);
-     
-        ?>
-    
-        <div class="row " style="margin-top:50px">
-            <table class="table table-striped table-hover" style="width:60%;margin-top:-2%;margin-left:30%">
-                <thead class="bg-success" style="background-color:#00B74A">
-                    <tr>
-                        <th>Leave ID</th>
-                        <th>Type</th>
-                        <th>From</th>
-                        <th>Duration</th>
-                        <th>PL Balance</th>
-                        <th>Decide</th>
-                        <th>Update</th>
-                    </tr>
-                </thead>
-                <?php
-                while ($row3 = $result3->fetch_assoc()) : ?>
-                    <tr>
-                        <td><?php echo $row3['lid']; ?></td>
-                        <td><?php echo $row3['type']; ?></td>
-                        <td><?php echo $row3['fdate']; ?></td>
-                        <td><?php echo $row3['duration']; ?></td>
-                        <td><?php echo $row3['pl_bal']; ?></td>
-                        <td><form method="post">
-                                        <select name="decide" id="decide">
-                                             <option value="Accepted">Accept</option>
-                                   
-                                             <option value="Rejected">Reject</option>
-                                             
-                                        </select>
-                                        <input type="hidden" name="lid" value="<?php echo $row3['lid']; ?>">
-                                        <td><input type="submit" name ="decide_leave" value="Submit"></td>
-                              </form></td>
-                    </tr>
-                <?php endwhile; ?>
-            </table>
-        </div>
-               
+                    <?php
 
-          </div>
+                    $sql4 = "SELECT * FROM leaves where decision='Pending' ";
+                    $result3 = $mysqli->query($sql4);
 
-     </div>
-</div>
+                    ?>
 
-</div>
+                    <div class="row " style="margin-top:50px">
+                         <table class="table table-striped table-hover" style="width:60%;margin-top:-2%;margin-left:30%">
+                              <thead class="bg-success" style="background-color:#00B74A">
+                                   <tr>
+                                        <th>Leave ID</th>
+                                        <th>Type</th>
+                                        <th>From</th>
+                                        <th>Duration</th>
+                                        <th>PL Balance</th>
+                                        <th>Decide</th>
+                                        <th>Update</th>
+                                   </tr>
+                              </thead>
+                              <?php
+                              while ($row3 = $result3->fetch_assoc()) : ?>
+                                   <tr>
+                                        <td><?php echo $row3['lid']; ?></td>
+                                        <td><?php echo $row3['type']; ?></td>
+                                        <td><?php echo $row3['fdate']; ?></td>
+                                        <td><?php echo $row3['duration']; ?></td>
+                                        <td><?php echo $row3['pl_bal']; ?></td>
+                                        <td>
+                                             <form method="post">
+                                                  <select name="decide" id="decide">
+                                                       <option value="Accepted">Accept</option>
+
+                                                       <option value="Rejected">Reject</option>
+
+                                                  </select>
+                                                  <input type="hidden" name="lid" value="<?php echo $row3['lid']; ?>">
+                                        <td><input type="submit" name="decide_leave" value="Submit"></td>
+                                        </form>
+                                        </td>
+                                   </tr>
+                              <?php endwhile; ?>
+                         </table>
+                    </div>
+
+
                </div>
 
-          
-             
-          
+          </div>
+          </div>
 
-              
-
-
+          </div>
+          </div>
 
 
 
-          
-          
+
+
+
+
+
+
+
+
+
+
 
           <!-- FOOTER -->
           <!-- <footer data-stellar-background-ratio="5">
@@ -433,7 +461,7 @@ if (isset($_POST['insertdata'])) {
 
 
      </body>
-     
+
      <script src="js/jquery.js"></script>
      <script src="js/custom.js"></script>
 

@@ -1,12 +1,19 @@
 <?php
 // Username is root 
 $user = 'root';
-$password = 'admin123';
+$password = '';
+
+session_start();
+
+if (!isset($_SESSION['name'])) {
+     header('location:../login.php');
+     exit;
+}
 
 
 $database = 'truventa';
 
-$servername = 'localhost:3307';
+$servername = 'localhost';
 $mysqli = new mysqli(
      $servername,
      $user,
@@ -100,7 +107,9 @@ if (isset($_POST['insertdata'])) {
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <style>
-          .second:hover,.nav-pills>li.active>.second, .nav-pills>li.active>.second:focus{
+          .second:hover,
+          .nav-pills>li.active>.second,
+          .nav-pills>li.active>.second:focus {
                background-color: #A4C31D;
                border-top-right-radius: 25px;
                border-bottom-right-radius: 25px;
@@ -108,14 +117,16 @@ if (isset($_POST['insertdata'])) {
                border-bottom-left-radius: 0px;
           }
 
-          .first:hover,.nav-pills>li.active>.first, .nav-pills>li.active>.first:focus{
+          .first:hover,
+          .nav-pills>li.active>.first,
+          .nav-pills>li.active>.first:focus {
                background-color: #A4C31D;
                border-top-left-radius: 25px;
                border-bottom-left-radius: 25px;
                border-top-right-radius: 0px;
                border-bottom-right-radius: 0px;
           }
-          
+
           table {
                margin: 0 auto;
                font-size: large;
@@ -154,191 +165,219 @@ if (isset($_POST['insertdata'])) {
           td {
                font-weight: lighter;
           }
+
           input[type="date"]::-webkit-calendar-picker-indicator {
-    
-    opacity: 1;
-    display: block;
-    background-color: #A4C31D;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
-    color:white;
-    border:2px solid black;
-}
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-   color: black;
-   font-size: 20px; 
-}
-::-moz-placeholder { /* Firefox 19+ */
-   color: black;
-   font-size: 20px; 
-}
-:-ms-input-placeholder { /* IE 10+ */
-   color: black;
-   font-size: 20px; 
-}
-:-moz-placeholder { /* Firefox 18- */
-   color: black;
-   font-size: 20px;
-}
+               opacity: 1;
+               display: block;
+               background-color: #A4C31D;
+               width: 20px;
+               height: 20px;
+               border-width: thin;
+               color: white;
+               border: 2px solid black;
+          }
 
-* {
-  box-sizing: border-box;
-}
+          ::-webkit-input-placeholder {
+               /* Chrome/Opera/Safari */
+               color: black;
+               font-size: 20px;
+          }
 
-/* Create two unequal columns that floats next to each other */
-.column {
-  float: left;
-  padding: 10px;
-  height: 500px; /* Should be removed. Only for demonstration */
-}
+          ::-moz-placeholder {
+               /* Firefox 19+ */
+               color: black;
+               font-size: 20px;
+          }
 
-.left {
-  width: 35%;
-  margin-top:10%;
-}
+          :-ms-input-placeholder {
+               /* IE 10+ */
+               color: black;
+               font-size: 20px;
+          }
 
-.right {
-  width: 65%;
-  
-}
+          :-moz-placeholder {
+               /* Firefox 18- */
+               color: black;
+               font-size: 20px;
+          }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+          * {
+               box-sizing: border-box;
+          }
 
-.formtable{
-        margin-top:15%;
-        border: 1px solid black;
-        width: 65%; 
-        margin-left: 20%; 
-        border-collapse:collapse;
-            
-}
+          /* Create two unequal columns that floats next to each other */
+          .column {
+               float: left;
+               padding: 10px;
+               height: 500px;
+               /* Should be removed. Only for demonstration */
+          }
 
-.tablehead{
-height:80px;
-font-size:30px;
-text-align:center;
-background-color: #9cc400;
-color:white;
+          .left {
+               width: 35%;
+               margin-top: 10%;
+          }
 
-}
-.iconbox{
-  text-align: center;
-  font-size: 35px;
-  width: 55px;
-  height: 50px;
-      }
-.table2{
-  border: 1px solid black;
-  width: 70%; 
-  margin-left: 15%;      
-  }
-.table2:hover{
-  background-color: #9cc400;
-  }
-.borderbox{
-  width: 80%;
-  font-size:25px;
-  } 
-.fa-bullseye{
-  font-size:35px;
-  }  
-.fa-user-plus{
-  font-size:30px;
- }
-.fa-address-book{
-  font-size:35px;
- }
-.fa-envelope-open{
-font-size:30px;
-  }    
-.rowentity{
-  background-color:#f0e8e8;
-  height:80px;
-  }
-.buttonentity{
- background-color:#f0e8e8;
-  text-align:center;
-  }
-.dot {
-  height: 50px;
-  width: 50px;
-  background-color: white;
-  border-radius: 50%;
-  display: inline-block;
-  margin-bottom:20px;
-  border: 0.5px solid black;
-  margin-left:50%;
-  
-}
-.entityd{
-  text-align:center; 
-  font-size:25px;
-}
-.fa-address-card{
-margin-top:15px;
-margin-left:10px;
-font-size:24px
-}
-.fa-user-alt{
-  margin-top:13px;
-  margin-left:13px;
-  font-size:24px
-}
-.fa-phone{
-  margin-top:13px;
-  margin-left:13px;
-  font-size:24px
-}
-.fa-key{
-  margin-top:13px;
-  margin-left:13px;
-  font-size:24px
-}
-.fa-envelope{
-  margin-top:13px;
-  margin-left:13px;
-  font-size:24px
-}
-  .submitbutton{
-    width:120px;
-    height:40px;
-    border-radius: 18px;
-    background-color: #9cc400;
-    font-size: 16px;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    border: 1px solid black;
-  } 
-  
-.inputentity{
-  
-  color:black;
-  height:30px;
-  border: 0.5px solid black;
-  margin-bottom:10%;
-  width:70%;
-  background-color:#f9f5f5;
-}
-::placeholder{
-  color: black;
-  text-align:center;
-  font-size:15px;
-}
-.entityr{
-  display:flex;
-  font-size:20px;
-  padding-top:30px;
-  
-}
+          .right {
+               width: 65%;
 
+          }
+
+          /* Clear floats after the columns */
+          .row:after {
+               content: "";
+               display: table;
+               clear: both;
+          }
+
+          .formtable {
+               margin-top: 15%;
+               border: 1px solid black;
+               width: 65%;
+               margin-left: 20%;
+               border-collapse: collapse;
+
+          }
+
+          .tablehead {
+               height: 80px;
+               font-size: 30px;
+               text-align: center;
+               background-color: #9cc400;
+               color: white;
+
+          }
+
+          .iconbox {
+               text-align: center;
+               font-size: 35px;
+               width: 55px;
+               height: 50px;
+          }
+
+          .table2 {
+               border: 1px solid black;
+               width: 70%;
+               margin-left: 15%;
+          }
+
+          .table2:hover {
+               background-color: #9cc400;
+          }
+
+          .borderbox {
+               width: 80%;
+               font-size: 25px;
+          }
+
+          .fa-bullseye {
+               font-size: 35px;
+          }
+
+          .fa-user-plus {
+               font-size: 30px;
+          }
+
+          .fa-address-book {
+               font-size: 35px;
+          }
+
+          .fa-envelope-open {
+               font-size: 30px;
+          }
+
+          .rowentity {
+               background-color: #f0e8e8;
+               height: 80px;
+          }
+
+          .buttonentity {
+               background-color: #f0e8e8;
+               text-align: center;
+          }
+
+          .dot {
+               height: 50px;
+               width: 50px;
+               background-color: white;
+               border-radius: 50%;
+               display: inline-block;
+               margin-bottom: 20px;
+               border: 0.5px solid black;
+               margin-left: 50%;
+
+          }
+
+          .entityd {
+               text-align: center;
+               font-size: 25px;
+          }
+
+          .fa-address-card {
+               margin-top: 15px;
+               margin-left: 10px;
+               font-size: 24px
+          }
+
+          .fa-user-alt {
+               margin-top: 13px;
+               margin-left: 13px;
+               font-size: 24px
+          }
+
+          .fa-phone {
+               margin-top: 13px;
+               margin-left: 13px;
+               font-size: 24px
+          }
+
+          .fa-key {
+               margin-top: 13px;
+               margin-left: 13px;
+               font-size: 24px
+          }
+
+          .fa-envelope {
+               margin-top: 13px;
+               margin-left: 13px;
+               font-size: 24px
+          }
+
+          .submitbutton {
+               width: 120px;
+               height: 40px;
+               border-radius: 18px;
+               background-color: #9cc400;
+               font-size: 16px;
+               text-align: center;
+               cursor: pointer;
+               display: inline-block;
+               border: 1px solid black;
+          }
+
+          .inputentity {
+
+               color: black;
+               height: 30px;
+               border: 0.5px solid black;
+               margin-bottom: 10%;
+               width: 70%;
+               background-color: #f9f5f5;
+          }
+
+          ::placeholder {
+               color: black;
+               text-align: center;
+               font-size: 15px;
+          }
+
+          .entityr {
+               display: flex;
+               font-size: 20px;
+               padding-top: 30px;
+
+          }
      </style>
 </head>
 
@@ -399,6 +438,11 @@ font-size:24px
                               <li><a href="#news" class="smoothScroll">Testimonials</a></li>
                               <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                               <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
+                              <li class="appointment-btn" style="margin-top: 5px;">
+                                   <form action="../logout.php" method="GET">
+                                        <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
+                                   </form>
+                              </li>
                          </ul>
                     </div>
 
@@ -410,100 +454,100 @@ font-size:24px
                <div class="column left">
                     <table class="slide-box">
 
-                    <table class="slide-box">
+                         <table class="slide-box">
 
-<table class="table2" class="menu" style="margin-top:-40%">
-     <tr>
-          <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
-          <td class="borderbox"> <a class="tabbuttons1" href="home.php"  style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-truck"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="two.php"  style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="three.php"  style="color:black;font-size:25px"> <b>Set Target</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="four.php"  style="color:black;font-size:25px"> <b> Leave Applications</b></a></td>
-     </tr>
-</table>
-       
-                         
+                              <table class="table2" class="menu" style="margin-top:-40%">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
+                                        <td class="borderbox"> <a class="tabbuttons1" href="home.php" style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-truck"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="two.php" style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="three.php" style="color:black;font-size:25px"> <b>Set Target</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="four.php" style="color:black;font-size:25px"> <b> Leave Applications</b></a></td>
+                                   </tr>
+                              </table>
+
+
                </div>
 
                </table>
 
 
-               <div class="column right" >
-               <div ID="one" class="tabcontent">
-               <form action="home.php" method="POST">
-    <table class="formtable"> 
-        <tr>
-          <th class="tablehead"rowspan="1"colspan="3">Create Account</th>
-          
-        </tr>
-        <tr class="rowentity" >
-          <td class="entityd">Designation</td>
+               <div class="column right">
+                    <div ID="one" class="tabcontent">
+                         <form action="home.php" method="POST">
+                              <table class="formtable">
+                                   <tr>
+                                        <th class="tablehead" rowspan="1" colspan="3">Create Account</th>
 
-          <td class="entityr" rowspan="1"colspan="3">
-          <input type="radio"  name="designation" value="mr">
-          <label for="mr">MR</label><br>
-          <input type="radio"  name="designation" value="stockist">
-          <label for="stockist">Stockist</label><br>
-          </td>
-        </tr>
+                                   </tr>
+                                   <tr class="rowentity">
+                                        <td class="entityd">Designation</td>
 
-        <tr class="rowentity">
-          <td class="entity"><span class="dot"><i class='far fa-address-card'></i></span></td>
-          <td class="entity" rowspan="1"colspan="2"><input class="inputentity" type="id" name="id" placeholder="ID"></td>
-         
-        </tr>
-        <tr class="rowentity">
-          <td class="entity"><span class="dot"><i class='fas fa-user-alt' ></i></span></td>
-          <td class="entity"rowspan="1"colspan="2"><input class="inputentity" type="name" name="name" placeholder="Name"></td>
-          
-        </tr>
-        <tr class="rowentity">
-          <td class="entity"><span class="dot"><i class='fas fa-phone' ></i></span></td>
-          <td class="entity" rowspan="1"colspan="2"><input  class="inputentity" type="mobile" name="mobile" placeholder="Mobile No."></td>
-          
-        </tr>
-        <tr class="rowentity">
-          <td class="entity"><span class="dot"><i class='fas fa-envelope' ></i></span></td>
-          <td class="entity"rowspan="1"colspan="2"><input class="inputentity" type="email" name="email" placeholder="Email"></td>
-         
-        </tr>
-        <tr class="rowentity">
-          <td class="entity"><span class="dot"><i class='fas fa-key' ></i></span></td>
-          <td class="entity"rowspan="1"colspan="2"><input class="inputentity" type="password" name="pin" placeholder="PIN"></td>
-         
-        </tr>
-        <tr class="rowentity">   
-        <td class="buttonentity" rowspan="1"colspan="3"><input class="submitbutton"type="submit" name="create" value="create" ></td>
-        </tr>
-       
-      </table>
-    </form>
- 
-</div>
-             
+                                        <td class="entityr" rowspan="1" colspan="3">
+                                             <input type="radio" name="designation" value="mr">
+                                             <label for="mr">MR</label><br>
+                                             <input type="radio" name="designation" value="stockist">
+                                             <label for="stockist">Stockist</label><br>
+                                        </td>
+                                   </tr>
+
+                                   <tr class="rowentity">
+                                        <td class="entity"><span class="dot"><i class='far fa-address-card'></i></span></td>
+                                        <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="id" name="id" placeholder="ID"></td>
+
+                                   </tr>
+                                   <tr class="rowentity">
+                                        <td class="entity"><span class="dot"><i class='fas fa-user-alt'></i></span></td>
+                                        <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="name" name="name" placeholder="Name"></td>
+
+                                   </tr>
+                                   <tr class="rowentity">
+                                        <td class="entity"><span class="dot"><i class='fas fa-phone'></i></span></td>
+                                        <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="mobile" name="mobile" placeholder="Mobile No."></td>
+
+                                   </tr>
+                                   <tr class="rowentity">
+                                        <td class="entity"><span class="dot"><i class='fas fa-envelope'></i></span></td>
+                                        <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="email" name="email" placeholder="Email"></td>
+
+                                   </tr>
+                                   <tr class="rowentity">
+                                        <td class="entity"><span class="dot"><i class='fas fa-key'></i></span></td>
+                                        <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="password" name="pin" placeholder="PIN"></td>
+
+                                   </tr>
+                                   <tr class="rowentity">
+                                        <td class="buttonentity" rowspan="1" colspan="3"><input class="submitbutton" type="submit" name="create" value="create"></td>
+                                   </tr>
+
+                              </table>
+                         </form>
+
+                    </div>
 
 
-               
-          
-          
 
-          <!-- FOOTER -->
-          <!-- <footer data-stellar-background-ratio="5">
+
+
+
+
+                    <!-- FOOTER -->
+                    <!-- <footer data-stellar-background-ratio="5">
                <div class="container">
                     <div class="row">
 
@@ -569,7 +613,7 @@ font-size:24px
 
 
      </body>
-     
+
      <script src="js/jquery.js"></script>
      <script src="js/custom.js"></script>
 
@@ -601,30 +645,29 @@ font-size:24px
 
 
 <?php
-include ('connection.php');
+include('connection.php');
 
 
 
-if(isset($_POST['create']))	
-{
-  $designation = $_POST['designation'];
-  $id = $_POST['id'];
-  $name = $_POST['name'];
-  $mobile = $_POST['mobile'];
-  $email=$_POST['email'];
-  $pin = $_POST['pin'];
+if (isset($_POST['create'])) {
+     $designation = $_POST['designation'];
+     $id = $_POST['id'];
+     $name = $_POST['name'];
+     $mobile = $_POST['mobile'];
+     $email = $_POST['email'];
+     $pin = $_POST['pin'];
 
 
 
-  $sql="INSERT INTO employee (designation,id,name,mobile,email,pin) VALUES('$designation','$id','$name','$mobile','$email','$pin')";
-  mysqli_query($connect,$sql);
+     $sql = "INSERT INTO employee (designation,id,name,mobile,email,pin) VALUES('$designation','$id','$name','$mobile','$email','$pin')";
+     mysqli_query($connect, $sql);
 
 
-  echo $designation ;
-  echo $id ;
-  echo $name ;
-  echo $mobile ;
-  echo $pin ;
+     echo $designation;
+     echo $id;
+     echo $name;
+     echo $mobile;
+     echo $pin;
 }
 
 ?>

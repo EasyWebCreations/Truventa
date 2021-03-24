@@ -1,12 +1,20 @@
 <?php
 // Username is root 
 $user = 'root';
-$password = 'admin123';
+$password = '';
+
+
+session_start();
+
+if (!isset($_SESSION['name'])) {
+     header('location:../login.php');
+     exit;
+}
 
 
 $database = 'truventa';
 
-$servername = 'localhost:3307';
+$servername = 'localhost';
 $mysqli = new mysqli(
      $servername,
      $user,
@@ -100,7 +108,9 @@ if (isset($_POST['insertdata'])) {
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <style>
-          .second:hover,.nav-pills>li.active>.second, .nav-pills>li.active>.second:focus{
+          .second:hover,
+          .nav-pills>li.active>.second,
+          .nav-pills>li.active>.second:focus {
                background-color: #A4C31D;
                border-top-right-radius: 25px;
                border-bottom-right-radius: 25px;
@@ -108,14 +118,16 @@ if (isset($_POST['insertdata'])) {
                border-bottom-left-radius: 0px;
           }
 
-          .first:hover,.nav-pills>li.active>.first, .nav-pills>li.active>.first:focus{
+          .first:hover,
+          .nav-pills>li.active>.first,
+          .nav-pills>li.active>.first:focus {
                background-color: #A4C31D;
                border-top-left-radius: 25px;
                border-bottom-left-radius: 25px;
                border-top-right-radius: 0px;
                border-bottom-right-radius: 0px;
           }
-          
+
           table {
                margin: 0 auto;
                font-size: large;
@@ -154,34 +166,42 @@ if (isset($_POST['insertdata'])) {
           td {
                font-weight: lighter;
           }
-          input[type="date"]::-webkit-calendar-picker-indicator {
-    
-    opacity: 1;
-    display: block;
-    background-color: #A4C31D;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
-    color:white;
-    border:2px solid black;
-}
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-   color: black;
-   font-size: 20px; 
-}
-::-moz-placeholder { /* Firefox 19+ */
-   color: black;
-   font-size: 20px; 
-}
-:-ms-input-placeholder { /* IE 10+ */
-   color: black;
-   font-size: 20px; 
-}
-:-moz-placeholder { /* Firefox 18- */
-   color: black;
-   font-size: 20px;
-}
+          input[type="date"]::-webkit-calendar-picker-indicator {
+
+               opacity: 1;
+               display: block;
+               background-color: #A4C31D;
+               width: 20px;
+               height: 20px;
+               border-width: thin;
+               color: white;
+               border: 2px solid black;
+          }
+
+          ::-webkit-input-placeholder {
+               /* Chrome/Opera/Safari */
+               color: black;
+               font-size: 20px;
+          }
+
+          ::-moz-placeholder {
+               /* Firefox 19+ */
+               color: black;
+               font-size: 20px;
+          }
+
+          :-ms-input-placeholder {
+               /* IE 10+ */
+               color: black;
+               font-size: 20px;
+          }
+
+          :-moz-placeholder {
+               /* Firefox 18- */
+               color: black;
+               font-size: 20px;
+          }
      </style>
 </head>
 
@@ -242,6 +262,11 @@ if (isset($_POST['insertdata'])) {
                               <li><a href="#news" class="smoothScroll">Testimonials</a></li>
                               <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                               <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
+                              <li class="appointment-btn" style="margin-top: 5px;">
+                                   <form action="../logout.php" method="GET">
+                                        <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
+                                   </form>
+                              </li>
                          </ul>
                     </div>
 
@@ -253,34 +278,34 @@ if (isset($_POST['insertdata'])) {
                <div class="column left">
                     <table class="slide-box">
 
-                    <table class="slide-box">
+                         <table class="slide-box">
 
-<table class="table2" class="menu">
-     <tr>
-          <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
-          <td class="borderbox"> <a class="tabbuttons1" href="home.php"  style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-truck"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="two.php"  style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="three.php"  style="color:black;font-size:25px"> <b>Set Target</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="four.php"  style="color:black;font-size:25px"> <b>eave Applications</b></a></td>
-     </tr>
-</table>
-       
-                         
+                              <table class="table2" class="menu">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
+                                        <td class="borderbox"> <a class="tabbuttons1" href="home.php" style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-truck"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="two.php" style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="three.php" style="color:black;font-size:25px"> <b>Set Target</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="four.php" style="color:black;font-size:25px"> <b>eave Applications</b></a></td>
+                                   </tr>
+                              </table>
+
+
                </div>
 
                </table>
@@ -288,55 +313,97 @@ if (isset($_POST['insertdata'])) {
 
 
                <div ID="one" class="tabcontent">
-                    
-                    
-                          
-                         <div class="container" style="margin-left: 30%;margin-top: -5%;">
-
-                       
-<ul id="navigation" class="nav nav-pills" style="margin-left: 30%;">
-
-          <li class="first_back" style="border: 2px solid;border-top-left-radius: 25px;border-bottom-left-radius: 25px;">
-
-                <a data-toggle="pill" id="first" href="#menu1" class="li first" style="font-size: 20px;color:black;">MR Statistics</a></li>
-                <li class="second_back"id="li" style="background-color:lightgray;border: 2px solid;border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
-                    <a data-toggle="pill" class="second" id="second" href="#menu2" style="font-size: 20px;color:black;">HR Statistics</a></li>
-
-     </ul>
-
-     <div class="tab-content">
-
-          <div id="menu1" class="tab-pane fade">
-               <h3 style="color:white">Menu 1</h3>
-             
-               <h2>Menu 1</h2>
-     
-          </div>
-          <div id="menu2" class="tab-pane fade">
-
-              
-       
-    <h2>Menu 2</h2>
-     
-               </div>
 
 
 
-          
-             
-          
-
-              
+                    <div class="container" style="margin-left: 30%;margin-top: -5%;">
 
 
+                         <ul id="navigation" class="nav nav-pills" style="margin-left: 30%;">
+
+                              <li class="first_back" style="border: 2px solid;border-top-left-radius: 25px;border-bottom-left-radius: 25px;">
+
+                                   <a data-toggle="pill" id="first" href="#menu1" class="li first" style="font-size: 20px;color:black;">MR Statistics</a>
+                              </li>
+                              <li class="second_back" id="li" style="background-color:lightgray;border: 2px solid;border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
+                                   <a data-toggle="pill" class="second" id="second" href="#menu2" style="font-size: 20px;color:black;">HR Statistics</a>
+                              </li>
+
+                         </ul>
+
+                         <div class="tab-content">
+
+                              <div id="menu1" class="tab-pane fade">
+                                   <h3 style="color:white">Menu 1</h3>
+
+                                   <!-- <h2>Menu 1</h2> -->
+                                   <div class="main" style=" position:absolute; top:300px; right:15%; width:50%; ">
+                                        <table id="er2" class="table table-striped table-hover">
+                                             <thead class="bg-success">
+                                                  <tr>
+                                                       <th scope="col">ID</th>
+                                                       <th scope="col">ROLE</th>
+                                                       <th scope="col">Name</th>
+                                                       <th colspan="1">Action</th>
+                                                  </tr>
+                                             </thead>
+                                             <?php
+                                             include('connection.php');
+                                             $result = $connect->query("SELECT * FROM employee where designation='MR'");
+                                             ?>
+                                             <?php
+                                             while ($row = $result->fetch_assoc()) : ?>
+                                                  <tr>
+                                                       <td><?php echo $row['id']; ?></td>
+                                                       <td><?php echo $row['designation']; ?></td>
+                                                       <td><?php echo $row['name']; ?></td>
+                                                       <td>
+                                                            <a class="btn btn-success" href="employee_record.php?edit=<?php echo $row['id']; ?>">Click Here</a>
+                                                       </td>
+                                                  </tr>
+                                             <?php endwhile; ?>
+                                        </table>
+                                   </div>
+
+                              </div>
+                              <div id="menu2" class="tab-pane fade">
+
+                                   <div class="main" style=" position:absolute; top:300px; right:15%; width:50%; ">
+                                        <table id="er2" class="table table-striped table-hover">
+                                             <thead class="bg-success">
+                                                  <tr>
+                                                       <th scope="col">ID</th>
+                                                       <th scope="col">ROLE</th>
+                                                       <th scope="col">Name</th>
+                                                       <th colspan="1">Action</th>
+                                                  </tr>
+                                             </thead>
+                                             <?php
+                                             include('connection.php');
+                                             $result = $connect->query("SELECT * FROM employee where designation='HR'");
+                                             ?>
+                                             <?php
+                                             while ($row = $result->fetch_assoc()) : ?>
+                                                  <tr>
+                                                       <td><?php echo $row['id']; ?></td>
+                                                       <td><?php echo $row['designation']; ?></td>
+                                                       <td><?php echo $row['name']; ?></td>
+                                                       <td>
+                                                            <a class="btn btn-success" href="employee_record.php?edit=<?php echo $row['id']; ?>">Click Here</a>
+                                                       </td>
+                                                  </tr>
+                                             <?php endwhile; ?>
+                                        </table>
+                                   </div>
+
+                                   <!-- <h2>Menu 2</h2> -->
+
+                              </div>
 
 
 
-          
-          
-
-          <!-- FOOTER -->
-          <!-- <footer data-stellar-background-ratio="5">
+                              <!-- FOOTER -->
+                              <!-- <footer data-stellar-background-ratio="5">
                <div class="container">
                     <div class="row">
 
@@ -402,7 +469,7 @@ if (isset($_POST['insertdata'])) {
 
 
      </body>
-     
+
      <script src="js/jquery.js"></script>
      <script src="js/custom.js"></script>
 

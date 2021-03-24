@@ -1,5 +1,14 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['name'])) {
+     header('location:../login.php');
+     exit;
+}
 
 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -45,7 +54,9 @@
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <style>
-          .second:hover,.nav-pills>li.active>.second, .nav-pills>li.active>.second:focus{
+          .second:hover,
+          .nav-pills>li.active>.second,
+          .nav-pills>li.active>.second:focus {
                background-color: #A4C31D;
                border-top-right-radius: 25px;
                border-bottom-right-radius: 25px;
@@ -53,14 +64,16 @@
                border-bottom-left-radius: 0px;
           }
 
-          .first:hover,.nav-pills>li.active>.first, .nav-pills>li.active>.first:focus{
+          .first:hover,
+          .nav-pills>li.active>.first,
+          .nav-pills>li.active>.first:focus {
                background-color: #A4C31D;
                border-top-left-radius: 25px;
                border-bottom-left-radius: 25px;
                border-top-right-radius: 0px;
                border-bottom-right-radius: 0px;
           }
-          
+
           table {
                margin: 0 auto;
                font-size: large;
@@ -99,34 +112,42 @@
           td {
                font-weight: lighter;
           }
-          input[type="date"]::-webkit-calendar-picker-indicator {
-    
-    opacity: 1;
-    display: block;
-    background-color: #A4C31D;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
-    color:white;
-    border:2px solid black;
-}
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-   color: black;
-   font-size: 20px; 
-}
-::-moz-placeholder { /* Firefox 19+ */
-   color: black;
-   font-size: 20px; 
-}
-:-ms-input-placeholder { /* IE 10+ */
-   color: black;
-   font-size: 20px; 
-}
-:-moz-placeholder { /* Firefox 18- */
-   color: black;
-   font-size: 20px;
-}
+          input[type="date"]::-webkit-calendar-picker-indicator {
+
+               opacity: 1;
+               display: block;
+               background-color: #A4C31D;
+               width: 20px;
+               height: 20px;
+               border-width: thin;
+               color: white;
+               border: 2px solid black;
+          }
+
+          ::-webkit-input-placeholder {
+               /* Chrome/Opera/Safari */
+               color: black;
+               font-size: 20px;
+          }
+
+          ::-moz-placeholder {
+               /* Firefox 19+ */
+               color: black;
+               font-size: 20px;
+          }
+
+          :-ms-input-placeholder {
+               /* IE 10+ */
+               color: black;
+               font-size: 20px;
+          }
+
+          :-moz-placeholder {
+               /* Firefox 18- */
+               color: black;
+               font-size: 20px;
+          }
      </style>
 </head>
 
@@ -187,6 +208,11 @@
                               <li><a href="#news" class="smoothScroll">Testimonials</a></li>
                               <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                               <li class="appointment-btn"><a href="mailto:care@truventahealthcare.com">Write to us</a></li>
+                              <li class="appointment-btn" style="margin-top: 5px;">
+                                   <form action="../logout.php" method="GET">
+                                        <button type="submit" name="logout" style="border: transparent;border-radius: 4px;color:white;float: right;padding: 11px;background-color: #A4C31D;">Logout</button>
+                                   </form>
+                              </li>
                          </ul>
                     </div>
 
@@ -198,32 +224,32 @@
                <div class="column left">
                     <table class="slide-box">
 
-                    <table class="slide-box">
+                         <table class="slide-box">
 
-<table class="table2" class="menu">
-     <tr>
-          <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
-          <td class="borderbox"> <a class="tabbuttons1" href="home.php"  style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-truck"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="two.php"  style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="three.php"  style="color:black;font-size:25px"> <b>Set Target</b></a></td>
-     </tr>
-</table>
-<table class="table2">
-     <tr>
-          <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
-          <td class="borderbox"><a class="tabbuttons1" href="four.php"  style="color:black;font-size:25px"> <b>Leave Applications</b></a></td>
-     </tr>
-</table>               
+                              <table class="table2" class="menu">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
+                                        <td class="borderbox"> <a class="tabbuttons1" href="home.php" style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-truck"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="two.php" style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="three.php" style="color:black;font-size:25px"> <b>Set Target</b></a></td>
+                                   </tr>
+                              </table>
+                              <table class="table2">
+                                   <tr>
+                                        <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
+                                        <td class="borderbox"><a class="tabbuttons1" href="four.php" style="color:black;font-size:25px"> <b>Leave Applications</b></a></td>
+                                   </tr>
+                              </table>
                </div>
 
                </table>
@@ -231,104 +257,104 @@
 
 
                <div ID="one" class="tabcontent">
-                    
-                         <h1>Set Target</h1>
 
-                         <h1 style="position:relative;top:-500px;visibility:hidden;">third page</h1>
-      <?php
+                    <h1>Set Target</h1>
 
-      // php code to Insert data into mysql database from input text
-      if (isset($_POST['insert'])) {
-        $hostname = "localhost:3307";
-        $username = "root";
-        $password = "admin123";
-        $databaseName = "truventa";
+                    <h1 style="position:relative;top:-500px;visibility:hidden;">third page</h1>
+                    <?php
 
-        // get values form input text and number
+                    // php code to Insert data into mysql database from input text
+                    if (isset($_POST['insert'])) {
+                         $hostname = "localhost";
+                         $username = "root";
+                         $password = "";
+                         $databaseName = "truventa";
 
-        $mrid = $_POST['mrid'];
-        $month = $_POST['month'];
-        $target = $_POST['target'];
-        $remarks = $_POST['remarks'];
-        // connect to mysql database using mysqli
-        $month = substr($month, 5);
-        $connect = mysqli_connect($hostname, $username, $password, $databaseName);
+                         // get values form input text and number
 
-        // mysql query to insert data
+                         $mrid = $_POST['mrid'];
+                         $month = $_POST['month'];
+                         $target = $_POST['target'];
+                         $remarks = $_POST['remarks'];
+                         // connect to mysql database using mysqli
+                         $month = substr($month, 5);
+                         $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
-        $query = "INSERT INTO `per`(`mrid`, `month`, `target`, `remarks`) VALUES ('$mrid','$month','$target','$remarks')";
+                         // mysql query to insert data
 
-        $result1 = mysqli_query($connect, $query);
+                         $query = "INSERT INTO `per`(`mrid`, `month`, `target`, `remarks`) VALUES ('$mrid','$month','$target','$remarks')";
 
-        // check if mysql query successful
+                         $result1 = mysqli_query($connect, $query);
 
-        // if($result1)
-        // {
-        //     echo 'Data Inserted';
+                         // check if mysql query successful
 
-        // }
+                         // if($result1)
+                         // {
+                         //     echo 'Data Inserted';
 
-        // else{
-        //     echo 'Data Not Inserted';
-        // }
+                         // }
+
+                         // else{
+                         //     echo 'Data Not Inserted';
+                         // }
 
 
-        mysqli_close($connect);
-      }
+                         mysqli_close($connect);
+                    }
 
-      ?>
-      <div style="background-color:#E4E5E6;width:40%;
+                    ?>
+                    <div style="background-color:#E4E5E6;width:40%;
 
 margin-left:45%;padding:30px;margin-top:-60px;border: 2px solid black;">
-        <form action="three.php" method="post" style="margin-left:10%;">
-          <h1 style="color:black">Set Target</h1>
-          <div style="display:flex">
+                         <form action="three.php" method="post" style="margin-left:10%;">
+                              <h1 style="color:black">Set Target</h1>
+                              <div style="display:flex">
 
-            <input style="font-weight:bolder;font-size:20px;width:40%;margin-right:10%" type="number" name="mrid" required placeholder="ID"><br><br>
-            <div style="background-color:white;height:40px;width:40%;display:flex">
-              <p style="font-size:20px;margin-top:7px;font-weight:bold;margin-left:20%;margin-right:20%">Type</p>
-              <select style="width: 30%;background-color:#A4C31D;color:black;font-size:15px;height:30px;margin-top:5px" id="type" name="type" placeholder="TYPE">
-                <option value="MR">HR</option>
+                                   <input style="font-weight:bolder;font-size:20px;width:40%;margin-right:10%" type="number" name="mrid" required placeholder="ID"><br><br>
+                                   <div style="background-color:white;height:40px;width:40%;display:flex">
+                                        <p style="font-size:20px;margin-top:7px;font-weight:bold;margin-left:20%;margin-right:20%">Type</p>
+                                        <select style="width: 30%;background-color:#A4C31D;color:black;font-size:15px;height:30px;margin-top:5px" id="type" name="type" placeholder="TYPE">
+                                             <option value="MR">HR</option>
 
-              </select>
-              <br>
-              <br>
-            </div>
-          </div>
-          <br>
-          <br>
-          <div style="display:flex" style="background-color:white">
-            <div style="background-color:white;display:flex;height:40px;width:40%;margin-right:10%">
-              <p style="color:black;margin-right:10%;font-size:20px;font-weight:bold;margin-top:7px;margin-left:23%">Month</p>
-              <input style="width:30%;margin-right:10%;background-color:#A4C31D;
+                                        </select>
+                                        <br>
+                                        <br>
+                                   </div>
+                              </div>
+                              <br>
+                              <br>
+                              <div style="display:flex" style="background-color:white">
+                                   <div style="background-color:white;display:flex;height:40px;width:40%;margin-right:10%">
+                                        <p style="color:black;margin-right:10%;font-size:20px;font-weight:bold;margin-top:7px;margin-left:23%">Month</p>
+                                        <input style="width:30%;margin-right:10%;background-color:#A4C31D;
             height:30px;margin-top:5px" type="month" name="month" required placeholder="Month" min="1" max="12"><br><br>
-            </div>
-            <input style="font-weight:bold;width:40%;font-size:20px" type="number" name="target" required placeholder="Target" min="10" max="100"><br><br>
-          </div>
-          <br>
-          <br>
-          <input style="width:90%;height:60px;font-size:20px;font-weight:bold" type="text" name="remarks" required placeholder="Remarks(if any)"><br><br>
+                                   </div>
+                                   <input style="font-weight:bold;width:40%;font-size:20px" type="number" name="target" required placeholder="Target" min="10" max="100"><br><br>
+                              </div>
+                              <br>
+                              <br>
+                              <input style="width:90%;height:60px;font-size:20px;font-weight:bold" type="text" name="remarks" required placeholder="Remarks(if any)"><br><br>
 
-          <input type="submit" name="insert" value="Assign" style="border: none;margin-left:60%;font-size:20px;height:40px;width:30%;background-color:#A4C31D;color:white;font-weight:bold">
+                              <input type="submit" name="insert" value="Assign" style="border: none;margin-left:60%;font-size:20px;height:40px;width:30%;background-color:#A4C31D;color:white;font-weight:bold">
 
-        </form>
-               </div>
-
-          
-             
-          
-
-              
+                         </form>
+                    </div>
 
 
 
 
 
-          
-          
 
-          <!-- FOOTER -->
-          <!-- <footer data-stellar-background-ratio="5">
+
+
+
+
+
+
+
+
+                    <!-- FOOTER -->
+                    <!-- <footer data-stellar-background-ratio="5">
                <div class="container">
                     <div class="row">
 
@@ -394,7 +420,7 @@ margin-left:45%;padding:30px;margin-top:-60px;border: 2px solid black;">
 
 
      </body>
-     
+
      <script src="js/jquery.js"></script>
      <script src="js/custom.js"></script>
 
@@ -423,5 +449,3 @@ margin-left:45%;padding:30px;margin-top:-60px;border: 2px solid black;">
      </script>
 
 </html>
-
-
