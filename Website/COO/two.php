@@ -358,7 +358,7 @@ if (isset($_POST['insertdata'])) {
                                                        <td><?php echo $row['designation']; ?></td>
                                                        <td><?php echo $row['name']; ?></td>
                                                        <td>
-                                                            <a class="btn btn-success" href="employee_record.php?edit=<?php echo $row['id']; ?>">Click Here</a>
+                                                            <a class="btn btn-success" href="MRTest.php?edit=<?php echo $row['id']; ?>">Click Here</a>
                                                        </td>
                                                   </tr>
                                              <?php endwhile; ?>
@@ -389,7 +389,7 @@ if (isset($_POST['insertdata'])) {
                                                        <td><?php echo $row['designation']; ?></td>
                                                        <td><?php echo $row['name']; ?></td>
                                                        <td>
-                                                            <a class="btn btn-success" href="employee_record.php?edit=<?php echo $row['id']; ?>">Click Here</a>
+                                                            <a class="btn btn-success" href="HRTest.php?edit=<?php echo $row['id']; ?>">Click Here</a>
                                                        </td>
                                                   </tr>
                                              <?php endwhile; ?>
