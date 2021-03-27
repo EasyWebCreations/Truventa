@@ -14,8 +14,8 @@ if (isset($_POST['update_leave'])) {
     $resultt = $conn->query($sql2);
     }
 
-    include('connectDB.php');
-    $curr_emp =$_GET['user'];
+    include('connection.php');
+    $curr_emp =$_GET['edit'];
     $emp_q = "SELECT * FROM `employee` WHERE id = '$curr_emp'";
     $result_emp = $connect->query($emp_q);
     $e_array = $result_emp->fetch_assoc();

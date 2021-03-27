@@ -400,8 +400,6 @@ if (isset($_POST['insertdata'])) {
 
                               </div>
 
-
-
                               <!-- FOOTER -->
                               <!-- <footer data-stellar-background-ratio="5">
                <div class="container">
