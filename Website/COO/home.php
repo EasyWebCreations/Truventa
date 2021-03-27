@@ -656,18 +656,17 @@ if (isset($_POST['create'])) {
      $mobile = $_POST['mobile'];
      $email = $_POST['email'];
      $pin = $_POST['pin'];
+     $hash_pin = password_hash($pin, PASSWORD_BCRYPT);
 
-
-
-     $sql = "INSERT INTO employee (designation,id,name,mobile,email,pin) VALUES('$designation','$id','$name','$mobile','$email','$pin')";
+     $sql = "INSERT INTO employee (designation,id,name,mobile,pin,email) VALUES('$designation','$id','$name','$mobile','$hash_pin','$email')";
      mysqli_query($connect, $sql);
 
 
-     echo $designation;
-     echo $id;
-     echo $name;
-     echo $mobile;
-     echo $pin;
+     // echo $designation;
+     // echo $id;
+     // echo $name;
+     // echo $mobile;
+     // echo $pin;
 }
 
 ?>
