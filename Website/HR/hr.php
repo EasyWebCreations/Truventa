@@ -66,7 +66,7 @@ if (isset($_POST['insert_data'])) {
     <meta name="keywords" content="">
     <meta name="author" content="Tooplate">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -583,13 +583,13 @@ if (isset($_POST['insert_data'])) {
             </h1>
                 <table class="table2">
                     <tr>
-                        <th class="iconbox"><i class="fas fa-user-plus"></i></th>
+                        <th class="iconbox"><i class="fa fa-user-plus"></i></th>
                         <td class="borderbox"> <a class="tabbuttons1" onclick="openCity(event, 'one')" id="defaultOpen"> <b>Create Account </b></a><br /></td>
                     </tr>
                 </table>
                 <table class="table2">
                     <tr>
-                        <th class="iconbox"><i class="fas fa-address-book"></i></th>
+                        <th class="iconbox"><i class="fa fa-address-book"></i></th>
                         <td class="borderbox"><a class="tabbuttons1" onclick="openCity(event, 'two')"> <b>Employee Record </b></a></td>
                     </tr>
                 </table>
@@ -601,7 +601,7 @@ if (isset($_POST['insert_data'])) {
                 </table>
                 <table class="table2">
                     <tr>
-                        <th class="iconbox"><i class="fas fa-envelope-open"></i></th>
+                        <th class="iconbox"><i class="fa fa-envelope-open"></i></th>
                         <td class="borderbox"><a class="tabbuttons1" onclick="openCity(event, 'four')"> <b>Leave Applications </b></a></td>
                     </tr>
 
@@ -630,27 +630,27 @@ if (isset($_POST['insert_data'])) {
                             </tr>
 
                             <tr class="rowentity">
-                                <td class="entity"><span class="dot"><i class='far fa-address-card'></i></span></td>
+                                <td class="entity"><span class="dot"><i class='fa fa-address-card'></i></span></td>
                                 <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="id" name="id" placeholder="ID"></td>
 
                             </tr>
                             <tr class="rowentity">
-                                <td class="entity"><span class="dot"><i class='fas fa-user-alt'></i></span></td>
+                                <td class="entity"><span class="dot"><i class='fa fa-user'></i></span></td>
                                 <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="name" name="name" placeholder="Name"></td>
 
                             </tr>
                             <tr class="rowentity">
-                                <td class="entity"><span class="dot"><i class='fas fa-phone'></i></span></td>
+                                <td class="entity"><span class="dot"><i class='fa fa-phone'></i></span></td>
                                 <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="mobile" name="mobile" placeholder="Mobile No."></td>
 
                             </tr>
                             <tr class="rowentity">
-                                <td class="entity"><span class="dot"><i class='fas fa-envelope'></i></span></td>
+                                <td class="entity"><span class="dot"><i class='fa fa-envelope'></i></span></td>
                                 <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="email" name="email" placeholder="Email"></td>
 
                             </tr>
                             <tr class="rowentity">
-                                <td class="entity"><span class="dot"><i class='fas fa-key'></i></span></td>
+                                <td class="entity"><span class="dot"><i class='fa fa-key'></i></span></td>
                                 <td class="entity" rowspan="1" colspan="2"><input class="inputentity" type="password" name="pin" placeholder="PIN"></td>
 
                             </tr>
