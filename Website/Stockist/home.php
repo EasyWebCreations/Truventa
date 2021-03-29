@@ -538,7 +538,7 @@ font-size: 20px; " type="text" id="remarks" name="remarks" placeholder="Enter re
 
                                    <?php
 
-                                   $sql4 = "SELECT * FROM leaves";
+                                   $sql4 = "SELECT * FROM leaves WHERE designation='Stock'";
                                    $result3 = $mysqli->query($sql4);
 
 

@@ -53,7 +53,7 @@ if (isset($_POST['insert_data'])) {
     <meta name="keywords" content="">
     <meta name="author" content="Tooplate">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -383,7 +383,7 @@ if (isset($_POST['insert_data'])) {
                             <input class="field c3" type="number" name="prices[]" placeholder="Price">
 
 
-                            <a href="javascript:void(0)" class="field addMore"><span aria-hidden="false "></span> <i class="fas fa-plus" style="color:black;"></i></a>
+                            <a href="javascript:void(0)" class="field addMore"><span aria-hidden="false "></span> <i class="fa fa-plus" style="color:black;"></i></a>
 
                         </div>
                         <input class="dt" placeholder="Remarks (if any)" style="margin-left:8%;margin-top: 3%;width: fit-content;"></input>
@@ -401,7 +401,7 @@ if (isset($_POST['insert_data'])) {
                         <input class="field c2" type="number" name="quantities[]" placeholder="Qty.">
                         <input class="field c3" type="number" name="prices[]" placeholder="Price">
                         <div class="field">
-                            <a href="javascript:void(0)" class="remove"><span aria-hidden="false "></span> <i class="fas fa-minus" style="color:black;"></i></a>
+                            <a href="javascript:void(0)" class="remove"><span aria-hidden="false "></span> <i class="fa fa-minus" style="color:black;"></i></a>
                         </div>
                     </div>
                 </div>
