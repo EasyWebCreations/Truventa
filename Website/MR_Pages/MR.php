@@ -702,3 +702,5 @@ if (isset($_POST['insert_data'])) {
     </script>
 
 </html>
+
+<!-- Comments -->
