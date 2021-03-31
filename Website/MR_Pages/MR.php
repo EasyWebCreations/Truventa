@@ -9,8 +9,10 @@ if (!isset($_SESSION['name'])) {
 
 
 if (isset($_POST['insert_data'])) {
-    //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
-    $conn = mysqli_connect("localhost", "root", "", "truventa");
+ $conn = mysqli_connect("localhost","root","","truventa
+ 
+ ");
+    //$conn = mysqli_connect("localhost", "root", "", "truventa");
 
 
     $id = $_SESSION['id'];
@@ -61,6 +63,7 @@ if (isset($_POST['insert_data'])) {
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="writetous.css">
+    <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -241,6 +244,7 @@ if (isset($_POST['insert_data'])) {
             font-size: xx-large;
             font-weight: bolder;
         }
+
     </style>
 </head>
 
@@ -368,7 +372,7 @@ if (isset($_POST['insert_data'])) {
 
 
             <div ID="one" class="tabcontent">
-                <div class="outerbox">
+                <div class="outerbox" id="outerbox">
                     <form method="post" action="submit.php">
                         <p class="dt" id="defaultdate"></p>
 
@@ -386,7 +390,7 @@ if (isset($_POST['insert_data'])) {
                             <a href="javascript:void(0)" class="field addMore"><span aria-hidden="false "></span> <i class="fa fa-plus" style="color:black;"></i></a>
 
                         </div>
-                        <input class="dt" placeholder="Remarks (if any)" style="margin-left:8%;margin-top: 3%;width: fit-content;"></input>
+                        <input class="dt" placeholder="Remarks (if any)" style="margin-left:8%;margin-top: 3%;"></input>
 
                         <input id="submit" class="btn btn-primary" type="submit" name="submit" value="Place Order " />
 
@@ -702,3 +706,5 @@ if (isset($_POST['insert_data'])) {
     </script>
 
 </html>
+
+<!-- Comments -->
