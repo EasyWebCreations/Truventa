@@ -1,0 +1,31 @@
+@media only screen and (max-width: 600px)
+{
+    .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+        width: 600px;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    header {
+        background: #ffffff;
+        border-bottom: 1px solid #f2f2f2;
+        display: flex;
+        width: 100%;
+        height: 45px;
+    }
+    .tabcontent {
+        margin-top: 10%;
+        margin-left: 13%;
+        margin-right: 10%;
+        width: 600px;
+    }
+    #outerbox
+    {
+        margin-top:4%;
+        padding:0px;
+        padding-top:10%;
+        width:90%;
+        margin-left:10%;
+        margin-right:10%;
+    }
+}
+
