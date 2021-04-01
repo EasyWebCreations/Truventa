@@ -10,8 +10,10 @@ if (!isset($_SESSION['name'])) {
 $id = $_SESSION['id'];
 
 if (isset($_POST['insert_data'])) {
-    //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
-    $conn = mysqli_connect("localhost", "root", "", "truventa");
+ $conn = mysqli_connect("localhost","root","","truventa
+ 
+ ");
+    //$conn = mysqli_connect("localhost", "root", "", "truventa");
 
 
 
@@ -54,7 +56,7 @@ if (isset($_POST['insert_data'])) {
     <meta name="keywords" content="">
     <meta name="author" content="Tooplate">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -62,6 +64,7 @@ if (isset($_POST['insert_data'])) {
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="writetous.css">
+    <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -242,6 +245,7 @@ if (isset($_POST['insert_data'])) {
             font-size: xx-large;
             font-weight: bolder;
         }
+
     </style>
 </head>
 
@@ -369,7 +373,7 @@ if (isset($_POST['insert_data'])) {
 
 
             <div ID="one" class="tabcontent">
-                <div class="outerbox">
+                <div class="outerbox" id="outerbox">
                     <form method="post" action="submit.php">
                         <p class="dt" id="defaultdate"></p>
 
@@ -384,10 +388,10 @@ if (isset($_POST['insert_data'])) {
                             <input class="field c3" type="number" name="prices[]" placeholder="Price">
 
 
-                            <a href="javascript:void(0)" class="field addMore"><span aria-hidden="false "></span> <i class="fas fa-plus" style="color:black;"></i></a>
+                            <a href="javascript:void(0)" class="field addMore"><span aria-hidden="false "></span> <i class="fa fa-plus" style="color:black;"></i></a>
 
                         </div>
-                        <input class="dt" placeholder="Remarks (if any)" style="margin-left:8%;margin-top: 3%;width: fit-content;"></input>
+                        <input class="dt" placeholder="Remarks (if any)" style="margin-left:8%;margin-top: 3%;"></input>
 
                         <input id="submit" class="btn btn-primary" type="submit" name="submit" value="Place Order " />
 
@@ -402,7 +406,7 @@ if (isset($_POST['insert_data'])) {
                         <input class="field c2" type="number" name="quantities[]" placeholder="Qty.">
                         <input class="field c3" type="number" name="prices[]" placeholder="Price">
                         <div class="field">
-                            <a href="javascript:void(0)" class="remove"><span aria-hidden="false "></span> <i class="fas fa-minus" style="color:black;"></i></a>
+                            <a href="javascript:void(0)" class="remove"><span aria-hidden="false "></span> <i class="fa fa-minus" style="color:black;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -741,3 +745,5 @@ if (isset($_POST['insert_data'])) {
     </script>
 
 </html>
+
+<!-- Comments -->

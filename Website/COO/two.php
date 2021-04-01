@@ -344,19 +344,34 @@ if (isset($_POST['insertdata'])) {
                                                        <th scope="col">ID</th>
                                                        <th scope="col">ROLE</th>
                                                        <th scope="col">Name</th>
+                                                       <th scope="col">Target</th>
+                                                       <th scope="col">Achieved</th>
+                                                       <th scope="col">Leaves</th>
                                                        <th colspan="1">Action</th>
                                                   </tr>
                                              </thead>
                                              <?php
                                              include('connection.php');
-                                             $result = $connect->query("SELECT * FROM employee where designation='MR'");
+                                             $result = $connect->query("SELECT employee.id, employee.designation, employee.name, mr_per.Target, mr_per.Accomplishment,mr_per.Month 
+                                             FROM employee LEFT JOIN mr_per ON mr_per.MRID = employee.ID
+                                             where employee.designation='MR'");
+                                             
                                              ?>
                                              <?php
                                              while ($row = $result->fetch_assoc()) : ?>
                                                   <tr>
-                                                       <td><?php echo $row['id']; ?></td>
+                                                       <td><?php echo $row['Month']; ?></td>
                                                        <td><?php echo $row['designation']; ?></td>
                                                        <td><?php echo $row['name']; ?></td>
+                                                       <td><?php echo $row['Target']; ?></td>                                                       
+                                                       <td><?php echo $row['Accomplishment']; ?></td>
+                                                       <td><?php
+                                                            $m = $row['Month'];
+                                                            $ID = $row['id'];
+                                                            // $month_leaves = $connect->query("SELECT SUM(duration) FROM `leaves` WHERE id=ID AND MONTH(fdate)=$m AND decision ='Accepted'");
+                                                            // $mleaves = $month_leaves->fetch_assoc();
+                                                            // echo $mleaves;
+                                                       ?>
                                                        <td>
                                                             <a class="btn btn-success" href="MRTest.php?edit=<?php echo $row['id']; ?>">Click Here</a>
                                                        </td>
@@ -388,6 +403,7 @@ if (isset($_POST['insertdata'])) {
                                                        <td><?php echo $row['id']; ?></td>
                                                        <td><?php echo $row['designation']; ?></td>
                                                        <td><?php echo $row['name']; ?></td>
+                                                       
                                                        <td>
                                                             <a class="btn btn-success" href="HRTest.php?edit=<?php echo $row['id']; ?>">Click Here</a>
                                                        </td>
