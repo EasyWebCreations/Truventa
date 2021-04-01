@@ -360,7 +360,7 @@ if (isset($_POST['insertdata'])) {
                                              <?php
                                              while ($row = $result->fetch_assoc()) : ?>
                                                   <tr>
-                                                       <td><?php echo $row['Month']; ?></td>
+                                                       <td><?php echo $row['id']; ?></td>
                                                        <td><?php echo $row['designation']; ?></td>
                                                        <td><?php echo $row['name']; ?></td>
                                                        <td><?php echo $row['Target']; ?></td>                                                       
@@ -368,9 +368,10 @@ if (isset($_POST['insertdata'])) {
                                                        <td><?php
                                                             $m = $row['Month'];
                                                             $ID = $row['id'];
-                                                            // $month_leaves = $connect->query("SELECT SUM(duration) FROM `leaves` WHERE id=ID AND MONTH(fdate)=$m AND decision ='Accepted'");
-                                                            // $mleaves = $month_leaves->fetch_assoc();
-                                                            // echo $mleaves;
+                                                            $month_leaves = $connect->query("SELECT SUM(duration) FROM leaves WHERE id='$ID' AND MONTH(fdate)='$m' AND decision ='Accepted'");
+                                                            $ml = $month_leaves->fetch_assoc();
+                                                            echo $ml['SUM(duration)'];
+                                                            // echo $ID;
                                                        ?>
                                                        <td>
                                                             <a class="btn btn-success" href="MRTest.php?edit=<?php echo $row['id']; ?>">Click Here</a>
