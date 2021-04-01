@@ -7,6 +7,7 @@ if (!isset($_SESSION['name'])) {
     exit;
 }
 
+$id = $_SESSION['id'];
 
 if (isset($_POST['insert_data'])) {
  $conn = mysqli_connect("localhost","root","","truventa
@@ -15,7 +16,7 @@ if (isset($_POST['insert_data'])) {
     //$conn = mysqli_connect("localhost", "root", "", "truventa");
 
 
-    $id = $_SESSION['id'];
+
     $type = $_POST['type'];
     $fdate = $_POST['fdate'];
     $duration = $_POST['duration'];
@@ -502,6 +503,44 @@ if (isset($_POST['insert_data'])) {
 
             <div ID="four" class="tabcontent">
                 <!-- ADD YOUR PROGRESS -->
+                <?php
+                $result = $connect->query("SELECT * FROM mr_per where MRID = $id");
+                ?>
+                <table class="table table-striped table-hover">
+                    <thead class="bg-success">
+                        <tr>
+                            <th scope="col">Month</th>
+                            <th scope="col">Target</th>
+                            <th scope="col">Achieved</th>
+                            <th></th>
+                            <th>Leaves</th>
+                            <th></th>
+                        </tr>
+
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>PL</th>
+                            <th>CL</th>
+                            <th>SL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = $result->fetch_assoc()) : ?>
+                            <tr>
+                                <td><?php echo $row['Month']; ?></td>
+                                <td><?php echo $row['Target']; ?></td>
+                                <td><?php echo $row['Accomplishment']; ?></td>
+                                <td><?php echo $row['SickLeaves']; ?></td>
+                                <td><?php echo $row['CasualLeaves']; ?></td>
+                                <td><?php echo $row['UnpaidLeaves']; ?></td>
+                            </tr>
+                        <?php endwhile;
+                        ?>
+                    </tbody>
+                </table>
             </div>
 
             <div ID="five" class="tabcontent">
