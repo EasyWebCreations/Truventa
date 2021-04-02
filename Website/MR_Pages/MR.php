@@ -506,8 +506,8 @@ if (isset($_POST['insert_data'])) {
                 <?php
                 $result = $connect->query("SELECT * FROM mr_per where MRID = $id");
                 ?>
-                <table class="table table-striped table-hover">
-                    <thead class="bg-success">
+                <table class="table table-striped table-hover" >
+                    <thead class="bg-success" style="background-color: #A4C31D;">
                         <tr>
                             <th scope="col">Month</th>
                             <th scope="col">Target</th>
