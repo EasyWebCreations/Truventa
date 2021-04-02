@@ -37,7 +37,7 @@ $result = $mysqli->query($sql1);
 <?php
 if (isset($_POST['insertdata'])) {
      //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
-     $conn = mysqli_connect("localhost:3307", "root", "admin123", "truventa");
+     $conn = mysqli_connect("localhost", "root", "", "truventa");
 
 
      $id = $_POST['id'];
@@ -86,6 +86,7 @@ if (isset($_POST['insertdata'])) {
      <link rel="stylesheet" href="css/owl.carousel.css">
      <link rel="stylesheet" href="css/owl.theme.default.min.css">
      <link rel="stylesheet" href="writetous.css">
+     <link rel="stylesheet" href="media.css">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -456,25 +457,25 @@ if (isset($_POST['insertdata'])) {
 
                          <table class="slide-box">
 
-                              <table class="table2" class="menu" style="margin-top:-40%">
+                              <table class="table2" class="menu" style="margin-top:-40%" id="option1">
                                    <tr>
                                         <th class="iconbox"><i class="fa fa-hourglass-start" style="font-size:36px"></i></th>
                                         <td class="borderbox"> <a class="tabbuttons1" href="home.php" style="color:black;font-size:25px"> <b class="on">Create Account</b></a><br /></td>
                                    </tr>
                               </table>
-                              <table class="table2">
+                              <table class="table2" id="option2">
                                    <tr>
                                         <th class="iconbox"><i class="fa fa-truck"></i></th>
                                         <td class="borderbox"><a class="tabbuttons1" href="two.php" style="color:black;font-size:25px"> <b>Employee Record</b></a></td>
                                    </tr>
                               </table>
-                              <table class="table2">
+                              <table class="table2" id="option3">
                                    <tr>
                                         <th class="iconbox"><i class="fa fa-check-square-o" style="font-size:36px;"></i></th>
                                         <td class="borderbox"><a class="tabbuttons1" href="three.php" style="color:black;font-size:25px"> <b>Set Target</b></a></td>
                                    </tr>
                               </table>
-                              <table class="table2">
+                              <table class="table2" id="option4">
                                    <tr>
                                         <th class="iconbox"><i class="fa fa-bar-chart"></i></th>
                                         <td class="borderbox"><a class="tabbuttons1" href="four.php" style="color:black;font-size:25px"> <b> Leave Applications</b></a></td>

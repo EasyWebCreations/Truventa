@@ -33,6 +33,9 @@ if (!isset($_SESSION['name'])) {
      <link rel="stylesheet" href="css/owl.carousel.css">
      <link rel="stylesheet" href="css/owl.theme.default.min.css">
      <link rel="stylesheet" href="writetous.css">
+
+
+     <link rel="stylesheet" href="media.css">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -303,9 +306,8 @@ if (!isset($_SESSION['name'])) {
                     }
 
                     ?>
-                    <div style="background-color:#E4E5E6;width:40%;
-
-margin-left:45%;padding:30px;margin-top:-60px;border: 2px solid black;">
+                    <div id="set" style="background-color:#E4E5E6;
+                    padding:30px;margin-top:-60px;border: 2px solid black;">
                          <form action="three.php" method="post" style="margin-left:10%;">
                               <h1 style="color:black">Set Target</h1>
                               <div style="display:flex">
