@@ -700,9 +700,9 @@ if (isset($_POST['insert_data'])) {
 
                 // php code to Insert data into mysql database from input text
                 if (isset($_POST['insert'])) {
-                    $hostname = "localhost:3307";
+                    $hostname = "localhost";
                     $username = "root";
-                    $password = "admin123";
+                    $password = "";
                     $databaseName = "truventa";
 
                     // get values form input text and number
@@ -737,9 +737,8 @@ if (isset($_POST['insert_data'])) {
                 }
 
                 ?>
-                <div style="background-color:#E4E5E6;width:40%;
-position:relative;top:-400px;
-margin-left:40%;padding:30px;padding-top:7px;border: 2px solid black;">
+                <div id="target" style="background-color:#E4E5E6;
+padding:30px;padding-top:7px;border: 2px solid black;">
                     <form action="hr.php" method="post" style="margin-left:10%;">
                         <h1 style="color:black">Set Target</h1>
                         <div style="display:flex">

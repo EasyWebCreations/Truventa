@@ -14,7 +14,13 @@
     }
     #footer
     {
-      margin-top:550px;
+      margin-top:530px;
+    }
+    #target
+    {
+        width:90%;
+position:relative;top:-200px;
+margin-left:0%;
     }
 }
 
@@ -23,6 +29,12 @@
     {
       
       margin-top:130px;
+    }
+    #target
+    {
+        width:40%;
+position:relative;top:-400px;
+margin-left:40%;
     }
    
 }
@@ -35,6 +47,12 @@
       
       margin-top:130px;
     }
+    #target
+    {
+        width:40%;
+position:relative;top:-400px;
+margin-left:40%;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -44,7 +62,12 @@
       
       margin-top:130px;
     }
-    
+    #target
+    {
+        width:40%;
+position:relative;top:-400px;
+margin-left:40%;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -54,5 +77,10 @@
       
       margin-top:130px;
     }
-   
+    #target
+    {
+        width:40%;
+position:relative;top:-400px;
+margin-left:40%;
+    } 
 }
