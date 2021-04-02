@@ -1,0 +1,58 @@
+
+@media only screen and (max-width: 600px)
+{
+    .formtable
+    {
+        position: relative;
+        bottom:-350px;
+       left:-180px;
+    }
+    #option1,#option2,#option3,#option4
+    {
+        width:300px;
+        margin-left:50%;
+    }
+    #footer
+    {
+      margin-top:550px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #footer
+    {
+      
+      margin-top:130px;
+    }
+   
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    #footer
+    {
+      
+      margin-top:130px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #footer
+    {
+      
+      margin-top:130px;
+    }
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #footer
+    {
+      
+      margin-top:130px;
+    }
+   
+}

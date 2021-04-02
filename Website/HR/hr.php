@@ -23,8 +23,8 @@ if (isset($_POST['update_leave'])) {
 
 
 if (isset($_POST['insert_data'])) {
-    //$conn = mysqli_connect("localhost:3307","root","admin123","easycode");
-    $conn = mysqli_connect("localhost", "root", "", "truventa");
+    $conn = mysqli_connect("localhost","root","","truventa");
+    //$conn = mysqli_connect("localhost", "root", "", "truventa");
 
     $id = $_POST['id'];
     $type = $_POST['type'];
@@ -74,6 +74,7 @@ if (isset($_POST['insert_data'])) {
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="writetous.css">
+    <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -581,25 +582,25 @@ if (isset($_POST['insert_data'])) {
              <?php echo $e_array['id'];?><br>
              <?php echo $e_array['name'];?>
             </h1>
-                <table class="table2">
+                <table class="table2" id="option1">
                     <tr>
                         <th class="iconbox"><i class="fa fa-user-plus"></i></th>
-                        <td class="borderbox"> <a class="tabbuttons1" onclick="openCity(event, 'one')" id="defaultOpen"> <b>Create Account </b></a><br /></td>
+                        <td class="borderbox"> <a  class="tabbuttons1" onclick="openCity(event, 'one')" id="defaultOpen"> <b>Create Account </b></a><br /></td>
                     </tr>
                 </table>
-                <table class="table2">
+                <table class="table2" id="option2">
                     <tr>
                         <th class="iconbox"><i class="fa fa-address-book"></i></th>
                         <td class="borderbox"><a class="tabbuttons1" onclick="openCity(event, 'two')"> <b>Employee Record </b></a></td>
                     </tr>
                 </table>
-                <table class="table2">
+                <table class="table2" id="option3">
                     <tr>
                         <th class="iconbox"><i class="fa fa-bullseye"></i></th>
                         <td class="borderbox"><a class="tabbuttons1" onclick="openCity(event, 'three')"> <b>Set Target </b></a></td>
                     </tr>
                 </table>
-                <table class="table2">
+                <table class="table2" id="option4">
                     <tr>
                         <th class="iconbox"><i class="fa fa-envelope-open"></i></th>
                         <td class="borderbox"><a class="tabbuttons1" onclick="openCity(event, 'four')"> <b>Leave Applications </b></a></td>
@@ -612,7 +613,7 @@ if (isset($_POST['insert_data'])) {
             <div class="column right">
 
                 <div ID="one" class="tabcontent">
-                    <form action="hr.php" method="POST">
+                    <form action="hr.php" method="POST" id="x">
                         <table class="formtable">
                             <tr>
                                 <th class="tablehead" rowspan="1" colspan="3">Create Account</th>
@@ -699,9 +700,9 @@ if (isset($_POST['insert_data'])) {
 
                 // php code to Insert data into mysql database from input text
                 if (isset($_POST['insert'])) {
-                    $hostname = "localhost";
+                    $hostname = "localhost:3307";
                     $username = "root";
-                    $password = "";
+                    $password = "admin123";
                     $databaseName = "truventa";
 
                     // get values form input text and number
@@ -886,7 +887,7 @@ if (isset($_POST['create'])) {
 
 
 <!-- FOOTER -->
-<footer data-stellar-background-ratio="5" style="margin-top: 10%;">
+<footer data-stellar-background-ratio="5"  id="footer">
     <div class="container">
         <div class="row">
 
